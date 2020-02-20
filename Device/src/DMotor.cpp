@@ -80,7 +80,11 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
 
+  void DMotor::update()
+  {
+	  getAddressSpaceLink()->setRotationalSpeed(rand(), OpcUA_Good);
 
+  }
 
 
 }
