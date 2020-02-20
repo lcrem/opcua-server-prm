@@ -82,7 +82,7 @@ namespace Device
 
   void DMotor::update()
   {
-	  getAddressSpaceLink()->setRotationalSpeed(rand(), OpcUA_Good);
+	  getAddressSpaceLink()->setRotationalSpeed(rand(), OpcUa_Good);
 
   }
 
