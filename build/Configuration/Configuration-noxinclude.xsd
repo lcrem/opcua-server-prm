@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://cern.ch/quasar/Configuration"
+           xmlns:xi="http://www.w3.org/2003/XInclude"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:d="http://cern.ch/quasar/Design"
+           xmlns:fnc="http://cern.ch/quasar/Functions"
+           targetNamespace="http://cern.ch/quasar/Configuration"
+           elementFormDefault="qualified">
+   <xi:include href="/home/lindac/DUNE/opcua-prm-server/Meta/config/Meta.xsd"
+               xpointer="xmlns(xs=http://www.w3.org/2001/XMLSchema) xpointer(/xs:schema/node())"/>
+   <xs:simpleType name="ObjectName">
+      <xs:restriction base="xs:string">
+         <xs:minLength value="1"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:complexType name="CalculatedVariable">
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="value" type="xs:string" use="required"/>
+      <xs:attribute name="initialValue" type="xs:double" use="optional"/>
+      <xs:attribute name="isBoolean"
+                    type="xs:boolean"
+                    use="optional"
+                    default="false"/>
+      <xs:attribute name="status" type="xs:string" use="optional"/>
+   </xs:complexType>
+   <xs:complexType name="CalculatedVariableGenericFormula">
+      <xs:attribute name="name" type="tns:ObjectName" use="required"/>
+      <xs:attribute name="formula" type="xs:string" use="required"/>
+   </xs:complexType>
+  <xs:complexType name="Motor">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>
+         </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="tns:ObjectName" use="required"/>
+      <xs:attribute name="Identifier" use="required" type="xs:unsignedInt"/>
+   </xs:complexType>
+  
+  	
+   <xs:complexType name="Configuration">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:element name="StandardMetaData" type="tns:StandardMetaData"/>
+         </xs:choice>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CalculatedVariableGenericFormula"
+                        type="tns:CalculatedVariableGenericFormula"/>
+         </xs:choice>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Motor" type="tns:Motor"/>
+         </xs:choice>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="configuration" type="tns:Configuration"/>
+</xs:schema>
