@@ -674,22 +674,22 @@ namespace Configuration
     this->name_.set (std::move (x));
   }
 
-  const Motor::Identifier_type& Motor::
-  Identifier () const
+  const Motor::identifier_type& Motor::
+  identifier () const
   {
-    return this->Identifier_.get ();
+    return this->identifier_.get ();
   }
 
-  Motor::Identifier_type& Motor::
-  Identifier ()
+  Motor::identifier_type& Motor::
+  identifier ()
   {
-    return this->Identifier_.get ();
+    return this->identifier_.get ();
   }
 
   void Motor::
-  Identifier (const Identifier_type& x)
+  identifier (const identifier_type& x)
   {
-    this->Identifier_.set (x);
+    this->identifier_.set (x);
   }
 
 
@@ -1905,11 +1905,11 @@ namespace Configuration
 
   Motor::
   Motor (const name_type& name,
-         const Identifier_type& Identifier)
+         const identifier_type& identifier)
   : ::xml_schema::type (),
     CalculatedVariable_ (this),
     name_ (name, this),
-    Identifier_ (Identifier, this)
+    identifier_ (identifier, this)
   {
   }
 
@@ -1920,7 +1920,7 @@ namespace Configuration
   : ::xml_schema::type (x, f, c),
     CalculatedVariable_ (x.CalculatedVariable_, f, this),
     name_ (x.name_, f, this),
-    Identifier_ (x.Identifier_, f, this)
+    identifier_ (x.identifier_, f, this)
   {
   }
 
@@ -1931,7 +1931,7 @@ namespace Configuration
   : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
     CalculatedVariable_ (this),
     name_ (this),
-    Identifier_ (this)
+    identifier_ (this)
   {
     if ((f & ::xml_schema::flags::base) == 0)
     {
@@ -1976,9 +1976,9 @@ namespace Configuration
         continue;
       }
 
-      if (n.name () == "Identifier" && n.namespace_ ().empty ())
+      if (n.name () == "identifier" && n.namespace_ ().empty ())
       {
-        this->Identifier_.set (Identifier_traits::create (i, f, this));
+        this->identifier_.set (identifier_traits::create (i, f, this));
         continue;
       }
     }
@@ -1990,10 +1990,10 @@ namespace Configuration
         "");
     }
 
-    if (!Identifier_.present ())
+    if (!identifier_.present ())
     {
       throw ::xsd::cxx::tree::expected_attribute< char > (
-        "Identifier",
+        "identifier",
         "");
     }
   }
@@ -2013,7 +2013,7 @@ namespace Configuration
       static_cast< ::xml_schema::type& > (*this) = x;
       this->CalculatedVariable_ = x.CalculatedVariable_;
       this->name_ = x.name_;
-      this->Identifier_ = x.Identifier_;
+      this->identifier_ = x.identifier_;
     }
 
     return *this;
@@ -2823,15 +2823,15 @@ namespace Configuration
       a << i.name ();
     }
 
-    // Identifier
+    // identifier
     //
     {
       ::xercesc::DOMAttr& a (
         ::xsd::cxx::xml::dom::create_attribute (
-          "Identifier",
+          "identifier",
           e));
 
-      a << i.Identifier ();
+      a << i.identifier ();
     }
   }
 
