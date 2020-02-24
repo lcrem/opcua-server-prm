@@ -674,6 +674,24 @@ namespace Configuration
     this->name_.set (std::move (x));
   }
 
+  const Motor::Identifier_type& Motor::
+  Identifier () const
+  {
+    return this->Identifier_.get ();
+  }
+
+  Motor::Identifier_type& Motor::
+  Identifier ()
+  {
+    return this->Identifier_.get ();
+  }
+
+  void Motor::
+  Identifier (const Identifier_type& x)
+  {
+    this->Identifier_.set (x);
+  }
+
 
   // Configuration
   // 
@@ -1886,10 +1904,12 @@ namespace Configuration
   //
 
   Motor::
-  Motor (const name_type& name)
+  Motor (const name_type& name,
+         const Identifier_type& Identifier)
   : ::xml_schema::type (),
     CalculatedVariable_ (this),
-    name_ (name, this)
+    name_ (name, this),
+    Identifier_ (Identifier, this)
   {
   }
 
@@ -1899,7 +1919,8 @@ namespace Configuration
          ::xml_schema::container* c)
   : ::xml_schema::type (x, f, c),
     CalculatedVariable_ (x.CalculatedVariable_, f, this),
-    name_ (x.name_, f, this)
+    name_ (x.name_, f, this),
+    Identifier_ (x.Identifier_, f, this)
   {
   }
 
@@ -1909,7 +1930,8 @@ namespace Configuration
          ::xml_schema::container* c)
   : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
     CalculatedVariable_ (this),
-    name_ (this)
+    name_ (this),
+    Identifier_ (this)
   {
     if ((f & ::xml_schema::flags::base) == 0)
     {
@@ -1953,12 +1975,25 @@ namespace Configuration
         this->name_.set (name_traits::create (i, f, this));
         continue;
       }
+
+      if (n.name () == "Identifier" && n.namespace_ ().empty ())
+      {
+        this->Identifier_.set (Identifier_traits::create (i, f, this));
+        continue;
+      }
     }
 
     if (!name_.present ())
     {
       throw ::xsd::cxx::tree::expected_attribute< char > (
         "name",
+        "");
+    }
+
+    if (!Identifier_.present ())
+    {
+      throw ::xsd::cxx::tree::expected_attribute< char > (
+        "Identifier",
         "");
     }
   }
@@ -1978,6 +2013,7 @@ namespace Configuration
       static_cast< ::xml_schema::type& > (*this) = x;
       this->CalculatedVariable_ = x.CalculatedVariable_;
       this->name_ = x.name_;
+      this->Identifier_ = x.Identifier_;
     }
 
     return *this;
@@ -2785,6 +2821,17 @@ namespace Configuration
           e));
 
       a << i.name ();
+    }
+
+    // Identifier
+    //
+    {
+      ::xercesc::DOMAttr& a (
+        ::xsd::cxx::xml::dom::create_attribute (
+          "Identifier",
+          e));
+
+      a << i.Identifier ();
     }
   }
 

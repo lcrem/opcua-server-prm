@@ -1150,9 +1150,24 @@ namespace Configuration
     void
     name (::std::unique_ptr< name_type > p);
 
+    // Identifier
+    //
+    typedef ::xml_schema::unsigned_int Identifier_type;
+    typedef ::xsd::cxx::tree::traits< Identifier_type, char > Identifier_traits;
+
+    const Identifier_type&
+    Identifier () const;
+
+    Identifier_type&
+    Identifier ();
+
+    void
+    Identifier (const Identifier_type& x);
+
     // Constructors.
     //
-    Motor (const name_type&);
+    Motor (const name_type&,
+           const Identifier_type&);
 
     Motor (const ::xercesc::DOMElement& e,
            ::xml_schema::flags f = 0,
@@ -1182,6 +1197,7 @@ namespace Configuration
     protected:
     CalculatedVariable_sequence CalculatedVariable_;
     ::xsd::cxx::tree::one< name_type > name_;
+    ::xsd::cxx::tree::one< Identifier_type > Identifier_;
   };
 
   class Configuration: public ::xml_schema::type
