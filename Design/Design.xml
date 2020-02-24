@@ -12,7 +12,9 @@
   		nullPolicy="nullAllowed" addressSpaceWrite="regular"
   		initialStatus="OpcUa_Good" initialValue="0">
   	</d:cachevariable>
-  	<d:configentry dataType="OpcUa_UInt32" name="Identifier"></d:configentry>
+  	<d:configentry dataType="OpcUa_UInt32" name="identifier"
+  		storedInDeviceObject="true">
+  	</d:configentry>
   </d:class>
   <d:root>
   	<d:hasobjects instantiateUsing="configuration" class="Motor"></d:hasobjects></d:root>

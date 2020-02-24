@@ -83,6 +83,7 @@ namespace Device
 
   void DMotor::update()
   {
+	  LOG(Log::INF) << "Motor ID = " << identifier() ;
 	  getAddressSpaceLink()->setRotationalSpeed(rand(), OpcUa_Good);
 
   }
