@@ -88,8 +88,8 @@ namespace Device
 	  getAddressSpaceLink()->setRotationalSpeed(rand(), OpcUa_Good);
 
 	  // from the clients to the server
-	  OpcUa_Double rotationalSpeedSetPoint = 0.0;
-	  getAddressSpaceLink()->getRotationalSpeedSetPoint(rotationalSpeedSetPoint) ;
+	  OpcUa_Double rotationalSpeedSetPoint = getAddressSpaceLink()->getRotationalSpeedSetPoint();
+	  LOG(Log::INF) << "update(), setpoint = " << rotationalSpeedSetPoint;
 
   }
 
