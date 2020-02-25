@@ -1150,6 +1150,20 @@ namespace Configuration
     void
     name (::std::unique_ptr< name_type > p);
 
+    // refreshRate
+    //
+    typedef ::xml_schema::float_ refreshRate_type;
+    typedef ::xsd::cxx::tree::traits< refreshRate_type, char > refreshRate_traits;
+
+    const refreshRate_type&
+    refreshRate () const;
+
+    refreshRate_type&
+    refreshRate ();
+
+    void
+    refreshRate (const refreshRate_type& x);
+
     // identifier
     //
     typedef ::xml_schema::unsigned_int identifier_type;
@@ -1167,6 +1181,7 @@ namespace Configuration
     // Constructors.
     //
     Motor (const name_type&,
+           const refreshRate_type&,
            const identifier_type&);
 
     Motor (const ::xercesc::DOMElement& e,
@@ -1197,6 +1212,7 @@ namespace Configuration
     protected:
     CalculatedVariable_sequence CalculatedVariable_;
     ::xsd::cxx::tree::one< name_type > name_;
+    ::xsd::cxx::tree::one< refreshRate_type > refreshRate_;
     ::xsd::cxx::tree::one< identifier_type > identifier_;
   };
 

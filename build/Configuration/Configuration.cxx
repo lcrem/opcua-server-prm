@@ -674,6 +674,24 @@ namespace Configuration
     this->name_.set (std::move (x));
   }
 
+  const Motor::refreshRate_type& Motor::
+  refreshRate () const
+  {
+    return this->refreshRate_.get ();
+  }
+
+  Motor::refreshRate_type& Motor::
+  refreshRate ()
+  {
+    return this->refreshRate_.get ();
+  }
+
+  void Motor::
+  refreshRate (const refreshRate_type& x)
+  {
+    this->refreshRate_.set (x);
+  }
+
   const Motor::identifier_type& Motor::
   identifier () const
   {
@@ -1905,10 +1923,12 @@ namespace Configuration
 
   Motor::
   Motor (const name_type& name,
+         const refreshRate_type& refreshRate,
          const identifier_type& identifier)
   : ::xml_schema::type (),
     CalculatedVariable_ (this),
     name_ (name, this),
+    refreshRate_ (refreshRate, this),
     identifier_ (identifier, this)
   {
   }
@@ -1920,6 +1940,7 @@ namespace Configuration
   : ::xml_schema::type (x, f, c),
     CalculatedVariable_ (x.CalculatedVariable_, f, this),
     name_ (x.name_, f, this),
+    refreshRate_ (x.refreshRate_, f, this),
     identifier_ (x.identifier_, f, this)
   {
   }
@@ -1931,6 +1952,7 @@ namespace Configuration
   : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
     CalculatedVariable_ (this),
     name_ (this),
+    refreshRate_ (this),
     identifier_ (this)
   {
     if ((f & ::xml_schema::flags::base) == 0)
@@ -1976,6 +1998,12 @@ namespace Configuration
         continue;
       }
 
+      if (n.name () == "refreshRate" && n.namespace_ ().empty ())
+      {
+        this->refreshRate_.set (refreshRate_traits::create (i, f, this));
+        continue;
+      }
+
       if (n.name () == "identifier" && n.namespace_ ().empty ())
       {
         this->identifier_.set (identifier_traits::create (i, f, this));
@@ -1987,6 +2015,13 @@ namespace Configuration
     {
       throw ::xsd::cxx::tree::expected_attribute< char > (
         "name",
+        "");
+    }
+
+    if (!refreshRate_.present ())
+    {
+      throw ::xsd::cxx::tree::expected_attribute< char > (
+        "refreshRate",
         "");
     }
 
@@ -2013,6 +2048,7 @@ namespace Configuration
       static_cast< ::xml_schema::type& > (*this) = x;
       this->CalculatedVariable_ = x.CalculatedVariable_;
       this->name_ = x.name_;
+      this->refreshRate_ = x.refreshRate_;
       this->identifier_ = x.identifier_;
     }
 
@@ -2821,6 +2857,17 @@ namespace Configuration
           e));
 
       a << i.name ();
+    }
+
+    // refreshRate
+    //
+    {
+      ::xercesc::DOMAttr& a (
+        ::xsd::cxx::xml::dom::create_attribute (
+          "refreshRate",
+          e));
+
+      a << i.refreshRate ();
     }
 
     // identifier
