@@ -15,6 +15,10 @@
   	<d:configentry dataType="OpcUa_UInt32" name="identifier"
   		storedInDeviceObject="true">
   	</d:configentry>
+  	<d:cachevariable initializeWith="configuration"
+  		dataType="OpcUa_Float" name="refreshRate" nullPolicy="nullAllowed"
+  		addressSpaceWrite="forbidden">
+  	</d:cachevariable>
   </d:class>
   <d:root>
   	<d:hasobjects instantiateUsing="configuration" class="Motor"></d:hasobjects></d:root>
