@@ -84,7 +84,12 @@ namespace Device
   void DMotor::update()
   {
 	  LOG(Log::INF) << "Motor ID = " << identifier() ;
+	  // from the server to the clients
 	  getAddressSpaceLink()->setRotationalSpeed(rand(), OpcUa_Good);
+
+	  // from the clients to the server
+	  OpcUA_Double rotationalSpeedSetPoint = 0.0;
+	  getAddressSpaceLink()->getRotationalSpeedSetPoint(rotationalSpeedSetPoint) ;
 
   }
 
