@@ -78,7 +78,11 @@ namespace Device
 
   UaStatus DMotor::writeRotationalSpeedSetPoint (const OpcUa_Double & v)
   {
-    return OpcUa_BadNotImplemented;
+	if (v > 1000)
+		return OpcUa_BadOutOfRange;
+	if (v < 0)
+		return OpcUa_BadOutOfRange;
+    return OpcUa_Good;
   }
 
 
