@@ -86,7 +86,7 @@ namespace Device
   void DController::update()
   {
 	  for (DMotor *motor : motors())
-		 motor->Update();
+		 motor->update();
   }
 
 }
