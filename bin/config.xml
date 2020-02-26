@@ -8,4 +8,6 @@
 	</Motor>
 	<Motor name="m2" identifier="2" refreshRate="1.5">
 		<CalculatedVariable name="calibratedRotationalSpeed" value="$applyGenerticFormula(calibratedRotationSpeed)"></CalculatedVariable>
-	</Motor></Controller></configuration>
+	</Motor>
+	</Controller>
+	</configuration>
