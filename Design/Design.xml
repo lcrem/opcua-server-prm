@@ -32,6 +32,9 @@
   <d:class name="AirFlowProbe">
   	<d:devicelogic></d:devicelogic>
   </d:class>
+  <d:class name="OldTypeMotor">
+  </d:class>
   <d:root>
-  	<d:hasobjects instantiateUsing="configuration" class="Controller"></d:hasobjects></d:root>
+  	<d:hasobjects instantiateUsing="configuration" class="Controller"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="OldTypeMotor"></d:hasobjects></d:root>
 </d:design>
