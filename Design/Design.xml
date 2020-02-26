@@ -20,6 +20,10 @@
   	<d:cachevariable initializeWith="configuration"
   		dataType="OpcUa_Float" name="refreshRate" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
+  		<d:configRestriction>
+  			<d:restrictionByEnumeration>
+  				<d:enumerationValue value="1000" /><d:enumerationValue
+  					value="2000" /></d:restrictionByEnumeration></d:configRestriction>
   	</d:cachevariable>
   	<d:hasobjects instantiateUsing="configuration" class="TemperatureProbe"></d:hasobjects>
   	<d:hasobjects instantiateUsing="configuration" class="AirFlowProbe"></d:hasobjects>
