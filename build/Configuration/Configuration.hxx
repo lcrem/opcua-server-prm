@@ -267,6 +267,9 @@ namespace Configuration
   class CalculatedVariable;
   class CalculatedVariableGenericFormula;
   class Motor;
+  class Controller;
+  class TemperatureProbe;
+  class AirFlowProbe;
   class Configuration;
 }
 
@@ -1133,6 +1136,40 @@ namespace Configuration
     void
     CalculatedVariable (const CalculatedVariable_sequence& s);
 
+    // TemperatureProbe
+    //
+    typedef ::Configuration::TemperatureProbe TemperatureProbe_type;
+    typedef ::xsd::cxx::tree::sequence< TemperatureProbe_type > TemperatureProbe_sequence;
+    typedef TemperatureProbe_sequence::iterator TemperatureProbe_iterator;
+    typedef TemperatureProbe_sequence::const_iterator TemperatureProbe_const_iterator;
+    typedef ::xsd::cxx::tree::traits< TemperatureProbe_type, char > TemperatureProbe_traits;
+
+    const TemperatureProbe_sequence&
+    TemperatureProbe () const;
+
+    TemperatureProbe_sequence&
+    TemperatureProbe ();
+
+    void
+    TemperatureProbe (const TemperatureProbe_sequence& s);
+
+    // AirFlowProbe
+    //
+    typedef ::Configuration::AirFlowProbe AirFlowProbe_type;
+    typedef ::xsd::cxx::tree::sequence< AirFlowProbe_type > AirFlowProbe_sequence;
+    typedef AirFlowProbe_sequence::iterator AirFlowProbe_iterator;
+    typedef AirFlowProbe_sequence::const_iterator AirFlowProbe_const_iterator;
+    typedef ::xsd::cxx::tree::traits< AirFlowProbe_type, char > AirFlowProbe_traits;
+
+    const AirFlowProbe_sequence&
+    AirFlowProbe () const;
+
+    AirFlowProbe_sequence&
+    AirFlowProbe ();
+
+    void
+    AirFlowProbe (const AirFlowProbe_sequence& s);
+
     // name
     //
     typedef ::Configuration::ObjectName name_type;
@@ -1211,9 +1248,242 @@ namespace Configuration
 
     protected:
     CalculatedVariable_sequence CalculatedVariable_;
+    TemperatureProbe_sequence TemperatureProbe_;
+    AirFlowProbe_sequence AirFlowProbe_;
     ::xsd::cxx::tree::one< name_type > name_;
     ::xsd::cxx::tree::one< refreshRate_type > refreshRate_;
     ::xsd::cxx::tree::one< identifier_type > identifier_;
+  };
+
+  class Controller: public ::xml_schema::type
+  {
+    public:
+    // CalculatedVariable
+    //
+    typedef ::Configuration::CalculatedVariable CalculatedVariable_type;
+    typedef ::xsd::cxx::tree::sequence< CalculatedVariable_type > CalculatedVariable_sequence;
+    typedef CalculatedVariable_sequence::iterator CalculatedVariable_iterator;
+    typedef CalculatedVariable_sequence::const_iterator CalculatedVariable_const_iterator;
+    typedef ::xsd::cxx::tree::traits< CalculatedVariable_type, char > CalculatedVariable_traits;
+
+    const CalculatedVariable_sequence&
+    CalculatedVariable () const;
+
+    CalculatedVariable_sequence&
+    CalculatedVariable ();
+
+    void
+    CalculatedVariable (const CalculatedVariable_sequence& s);
+
+    // Motor
+    //
+    typedef ::Configuration::Motor Motor_type;
+    typedef ::xsd::cxx::tree::sequence< Motor_type > Motor_sequence;
+    typedef Motor_sequence::iterator Motor_iterator;
+    typedef Motor_sequence::const_iterator Motor_const_iterator;
+    typedef ::xsd::cxx::tree::traits< Motor_type, char > Motor_traits;
+
+    const Motor_sequence&
+    Motor () const;
+
+    Motor_sequence&
+    Motor ();
+
+    void
+    Motor (const Motor_sequence& s);
+
+    // name
+    //
+    typedef ::Configuration::ObjectName name_type;
+    typedef ::xsd::cxx::tree::traits< name_type, char > name_traits;
+
+    const name_type&
+    name () const;
+
+    name_type&
+    name ();
+
+    void
+    name (const name_type& x);
+
+    void
+    name (::std::unique_ptr< name_type > p);
+
+    // Constructors.
+    //
+    Controller (const name_type&);
+
+    Controller (const ::xercesc::DOMElement& e,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+    Controller (const Controller& x,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+    virtual Controller*
+    _clone (::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0) const;
+
+    Controller&
+    operator= (const Controller& x);
+
+    virtual 
+    ~Controller ();
+
+    // Implementation.
+    //
+    protected:
+    void
+    parse (::xsd::cxx::xml::dom::parser< char >&,
+           ::xml_schema::flags);
+
+    protected:
+    CalculatedVariable_sequence CalculatedVariable_;
+    Motor_sequence Motor_;
+    ::xsd::cxx::tree::one< name_type > name_;
+  };
+
+  class TemperatureProbe: public ::xml_schema::type
+  {
+    public:
+    // CalculatedVariable
+    //
+    typedef ::Configuration::CalculatedVariable CalculatedVariable_type;
+    typedef ::xsd::cxx::tree::sequence< CalculatedVariable_type > CalculatedVariable_sequence;
+    typedef CalculatedVariable_sequence::iterator CalculatedVariable_iterator;
+    typedef CalculatedVariable_sequence::const_iterator CalculatedVariable_const_iterator;
+    typedef ::xsd::cxx::tree::traits< CalculatedVariable_type, char > CalculatedVariable_traits;
+
+    const CalculatedVariable_sequence&
+    CalculatedVariable () const;
+
+    CalculatedVariable_sequence&
+    CalculatedVariable ();
+
+    void
+    CalculatedVariable (const CalculatedVariable_sequence& s);
+
+    // name
+    //
+    typedef ::Configuration::ObjectName name_type;
+    typedef ::xsd::cxx::tree::traits< name_type, char > name_traits;
+
+    const name_type&
+    name () const;
+
+    name_type&
+    name ();
+
+    void
+    name (const name_type& x);
+
+    void
+    name (::std::unique_ptr< name_type > p);
+
+    // Constructors.
+    //
+    TemperatureProbe (const name_type&);
+
+    TemperatureProbe (const ::xercesc::DOMElement& e,
+                      ::xml_schema::flags f = 0,
+                      ::xml_schema::container* c = 0);
+
+    TemperatureProbe (const TemperatureProbe& x,
+                      ::xml_schema::flags f = 0,
+                      ::xml_schema::container* c = 0);
+
+    virtual TemperatureProbe*
+    _clone (::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0) const;
+
+    TemperatureProbe&
+    operator= (const TemperatureProbe& x);
+
+    virtual 
+    ~TemperatureProbe ();
+
+    // Implementation.
+    //
+    protected:
+    void
+    parse (::xsd::cxx::xml::dom::parser< char >&,
+           ::xml_schema::flags);
+
+    protected:
+    CalculatedVariable_sequence CalculatedVariable_;
+    ::xsd::cxx::tree::one< name_type > name_;
+  };
+
+  class AirFlowProbe: public ::xml_schema::type
+  {
+    public:
+    // CalculatedVariable
+    //
+    typedef ::Configuration::CalculatedVariable CalculatedVariable_type;
+    typedef ::xsd::cxx::tree::sequence< CalculatedVariable_type > CalculatedVariable_sequence;
+    typedef CalculatedVariable_sequence::iterator CalculatedVariable_iterator;
+    typedef CalculatedVariable_sequence::const_iterator CalculatedVariable_const_iterator;
+    typedef ::xsd::cxx::tree::traits< CalculatedVariable_type, char > CalculatedVariable_traits;
+
+    const CalculatedVariable_sequence&
+    CalculatedVariable () const;
+
+    CalculatedVariable_sequence&
+    CalculatedVariable ();
+
+    void
+    CalculatedVariable (const CalculatedVariable_sequence& s);
+
+    // name
+    //
+    typedef ::Configuration::ObjectName name_type;
+    typedef ::xsd::cxx::tree::traits< name_type, char > name_traits;
+
+    const name_type&
+    name () const;
+
+    name_type&
+    name ();
+
+    void
+    name (const name_type& x);
+
+    void
+    name (::std::unique_ptr< name_type > p);
+
+    // Constructors.
+    //
+    AirFlowProbe (const name_type&);
+
+    AirFlowProbe (const ::xercesc::DOMElement& e,
+                  ::xml_schema::flags f = 0,
+                  ::xml_schema::container* c = 0);
+
+    AirFlowProbe (const AirFlowProbe& x,
+                  ::xml_schema::flags f = 0,
+                  ::xml_schema::container* c = 0);
+
+    virtual AirFlowProbe*
+    _clone (::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0) const;
+
+    AirFlowProbe&
+    operator= (const AirFlowProbe& x);
+
+    virtual 
+    ~AirFlowProbe ();
+
+    // Implementation.
+    //
+    protected:
+    void
+    parse (::xsd::cxx::xml::dom::parser< char >&,
+           ::xml_schema::flags);
+
+    protected:
+    CalculatedVariable_sequence CalculatedVariable_;
+    ::xsd::cxx::tree::one< name_type > name_;
   };
 
   class Configuration: public ::xml_schema::type
@@ -1257,22 +1527,22 @@ namespace Configuration
     void
     CalculatedVariableGenericFormula (const CalculatedVariableGenericFormula_sequence& s);
 
-    // Motor
+    // Controller
     //
-    typedef ::Configuration::Motor Motor_type;
-    typedef ::xsd::cxx::tree::sequence< Motor_type > Motor_sequence;
-    typedef Motor_sequence::iterator Motor_iterator;
-    typedef Motor_sequence::const_iterator Motor_const_iterator;
-    typedef ::xsd::cxx::tree::traits< Motor_type, char > Motor_traits;
+    typedef ::Configuration::Controller Controller_type;
+    typedef ::xsd::cxx::tree::sequence< Controller_type > Controller_sequence;
+    typedef Controller_sequence::iterator Controller_iterator;
+    typedef Controller_sequence::const_iterator Controller_const_iterator;
+    typedef ::xsd::cxx::tree::traits< Controller_type, char > Controller_traits;
 
-    const Motor_sequence&
-    Motor () const;
+    const Controller_sequence&
+    Controller () const;
 
-    Motor_sequence&
-    Motor ();
+    Controller_sequence&
+    Controller ();
 
     void
-    Motor (const Motor_sequence& s);
+    Controller (const Controller_sequence& s);
 
     // CalculatedVariable
     //
@@ -1323,7 +1593,7 @@ namespace Configuration
     protected:
     StandardMetaData_optional StandardMetaData_;
     CalculatedVariableGenericFormula_sequence CalculatedVariableGenericFormula_;
-    Motor_sequence Motor_;
+    Controller_sequence Controller_;
     CalculatedVariable_sequence CalculatedVariable_;
   };
 }
@@ -1506,6 +1776,15 @@ namespace Configuration
 
   void
   operator<< (::xercesc::DOMElement&, const Motor&);
+
+  void
+  operator<< (::xercesc::DOMElement&, const Controller&);
+
+  void
+  operator<< (::xercesc::DOMElement&, const TemperatureProbe&);
+
+  void
+  operator<< (::xercesc::DOMElement&, const AirFlowProbe&);
 
   void
   operator<< (::xercesc::DOMElement&, const Configuration&);

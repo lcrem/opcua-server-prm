@@ -650,6 +650,42 @@ namespace Configuration
     this->CalculatedVariable_ = s;
   }
 
+  const Motor::TemperatureProbe_sequence& Motor::
+  TemperatureProbe () const
+  {
+    return this->TemperatureProbe_;
+  }
+
+  Motor::TemperatureProbe_sequence& Motor::
+  TemperatureProbe ()
+  {
+    return this->TemperatureProbe_;
+  }
+
+  void Motor::
+  TemperatureProbe (const TemperatureProbe_sequence& s)
+  {
+    this->TemperatureProbe_ = s;
+  }
+
+  const Motor::AirFlowProbe_sequence& Motor::
+  AirFlowProbe () const
+  {
+    return this->AirFlowProbe_;
+  }
+
+  Motor::AirFlowProbe_sequence& Motor::
+  AirFlowProbe ()
+  {
+    return this->AirFlowProbe_;
+  }
+
+  void Motor::
+  AirFlowProbe (const AirFlowProbe_sequence& s)
+  {
+    this->AirFlowProbe_ = s;
+  }
+
   const Motor::name_type& Motor::
   name () const
   {
@@ -711,6 +747,162 @@ namespace Configuration
   }
 
 
+  // Controller
+  // 
+
+  const Controller::CalculatedVariable_sequence& Controller::
+  CalculatedVariable () const
+  {
+    return this->CalculatedVariable_;
+  }
+
+  Controller::CalculatedVariable_sequence& Controller::
+  CalculatedVariable ()
+  {
+    return this->CalculatedVariable_;
+  }
+
+  void Controller::
+  CalculatedVariable (const CalculatedVariable_sequence& s)
+  {
+    this->CalculatedVariable_ = s;
+  }
+
+  const Controller::Motor_sequence& Controller::
+  Motor () const
+  {
+    return this->Motor_;
+  }
+
+  Controller::Motor_sequence& Controller::
+  Motor ()
+  {
+    return this->Motor_;
+  }
+
+  void Controller::
+  Motor (const Motor_sequence& s)
+  {
+    this->Motor_ = s;
+  }
+
+  const Controller::name_type& Controller::
+  name () const
+  {
+    return this->name_.get ();
+  }
+
+  Controller::name_type& Controller::
+  name ()
+  {
+    return this->name_.get ();
+  }
+
+  void Controller::
+  name (const name_type& x)
+  {
+    this->name_.set (x);
+  }
+
+  void Controller::
+  name (::std::unique_ptr< name_type > x)
+  {
+    this->name_.set (std::move (x));
+  }
+
+
+  // TemperatureProbe
+  // 
+
+  const TemperatureProbe::CalculatedVariable_sequence& TemperatureProbe::
+  CalculatedVariable () const
+  {
+    return this->CalculatedVariable_;
+  }
+
+  TemperatureProbe::CalculatedVariable_sequence& TemperatureProbe::
+  CalculatedVariable ()
+  {
+    return this->CalculatedVariable_;
+  }
+
+  void TemperatureProbe::
+  CalculatedVariable (const CalculatedVariable_sequence& s)
+  {
+    this->CalculatedVariable_ = s;
+  }
+
+  const TemperatureProbe::name_type& TemperatureProbe::
+  name () const
+  {
+    return this->name_.get ();
+  }
+
+  TemperatureProbe::name_type& TemperatureProbe::
+  name ()
+  {
+    return this->name_.get ();
+  }
+
+  void TemperatureProbe::
+  name (const name_type& x)
+  {
+    this->name_.set (x);
+  }
+
+  void TemperatureProbe::
+  name (::std::unique_ptr< name_type > x)
+  {
+    this->name_.set (std::move (x));
+  }
+
+
+  // AirFlowProbe
+  // 
+
+  const AirFlowProbe::CalculatedVariable_sequence& AirFlowProbe::
+  CalculatedVariable () const
+  {
+    return this->CalculatedVariable_;
+  }
+
+  AirFlowProbe::CalculatedVariable_sequence& AirFlowProbe::
+  CalculatedVariable ()
+  {
+    return this->CalculatedVariable_;
+  }
+
+  void AirFlowProbe::
+  CalculatedVariable (const CalculatedVariable_sequence& s)
+  {
+    this->CalculatedVariable_ = s;
+  }
+
+  const AirFlowProbe::name_type& AirFlowProbe::
+  name () const
+  {
+    return this->name_.get ();
+  }
+
+  AirFlowProbe::name_type& AirFlowProbe::
+  name ()
+  {
+    return this->name_.get ();
+  }
+
+  void AirFlowProbe::
+  name (const name_type& x)
+  {
+    this->name_.set (x);
+  }
+
+  void AirFlowProbe::
+  name (::std::unique_ptr< name_type > x)
+  {
+    this->name_.set (std::move (x));
+  }
+
+
   // Configuration
   // 
 
@@ -762,22 +954,22 @@ namespace Configuration
     this->CalculatedVariableGenericFormula_ = s;
   }
 
-  const Configuration::Motor_sequence& Configuration::
-  Motor () const
+  const Configuration::Controller_sequence& Configuration::
+  Controller () const
   {
-    return this->Motor_;
+    return this->Controller_;
   }
 
-  Configuration::Motor_sequence& Configuration::
-  Motor ()
+  Configuration::Controller_sequence& Configuration::
+  Controller ()
   {
-    return this->Motor_;
+    return this->Controller_;
   }
 
   void Configuration::
-  Motor (const Motor_sequence& s)
+  Controller (const Controller_sequence& s)
   {
-    this->Motor_ = s;
+    this->Controller_ = s;
   }
 
   const Configuration::CalculatedVariable_sequence& Configuration::
@@ -1927,6 +2119,8 @@ namespace Configuration
          const identifier_type& identifier)
   : ::xml_schema::type (),
     CalculatedVariable_ (this),
+    TemperatureProbe_ (this),
+    AirFlowProbe_ (this),
     name_ (name, this),
     refreshRate_ (refreshRate, this),
     identifier_ (identifier, this)
@@ -1939,6 +2133,8 @@ namespace Configuration
          ::xml_schema::container* c)
   : ::xml_schema::type (x, f, c),
     CalculatedVariable_ (x.CalculatedVariable_, f, this),
+    TemperatureProbe_ (x.TemperatureProbe_, f, this),
+    AirFlowProbe_ (x.AirFlowProbe_, f, this),
     name_ (x.name_, f, this),
     refreshRate_ (x.refreshRate_, f, this),
     identifier_ (x.identifier_, f, this)
@@ -1951,6 +2147,8 @@ namespace Configuration
          ::xml_schema::container* c)
   : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
     CalculatedVariable_ (this),
+    TemperatureProbe_ (this),
+    AirFlowProbe_ (this),
     name_ (this),
     refreshRate_ (this),
     identifier_ (this)
@@ -1980,6 +2178,28 @@ namespace Configuration
           CalculatedVariable_traits::create (i, f, this));
 
         this->CalculatedVariable_.push_back (::std::move (r));
+        continue;
+      }
+
+      // TemperatureProbe
+      //
+      if (n.name () == "TemperatureProbe" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      {
+        ::std::unique_ptr< TemperatureProbe_type > r (
+          TemperatureProbe_traits::create (i, f, this));
+
+        this->TemperatureProbe_.push_back (::std::move (r));
+        continue;
+      }
+
+      // AirFlowProbe
+      //
+      if (n.name () == "AirFlowProbe" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      {
+        ::std::unique_ptr< AirFlowProbe_type > r (
+          AirFlowProbe_traits::create (i, f, this));
+
+        this->AirFlowProbe_.push_back (::std::move (r));
         continue;
       }
 
@@ -2047,6 +2267,8 @@ namespace Configuration
     {
       static_cast< ::xml_schema::type& > (*this) = x;
       this->CalculatedVariable_ = x.CalculatedVariable_;
+      this->TemperatureProbe_ = x.TemperatureProbe_;
+      this->AirFlowProbe_ = x.AirFlowProbe_;
       this->name_ = x.name_;
       this->refreshRate_ = x.refreshRate_;
       this->identifier_ = x.identifier_;
@@ -2060,6 +2282,339 @@ namespace Configuration
   {
   }
 
+  // Controller
+  //
+
+  Controller::
+  Controller (const name_type& name)
+  : ::xml_schema::type (),
+    CalculatedVariable_ (this),
+    Motor_ (this),
+    name_ (name, this)
+  {
+  }
+
+  Controller::
+  Controller (const Controller& x,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+  : ::xml_schema::type (x, f, c),
+    CalculatedVariable_ (x.CalculatedVariable_, f, this),
+    Motor_ (x.Motor_, f, this),
+    name_ (x.name_, f, this)
+  {
+  }
+
+  Controller::
+  Controller (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+  : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+    CalculatedVariable_ (this),
+    Motor_ (this),
+    name_ (this)
+  {
+    if ((f & ::xml_schema::flags::base) == 0)
+    {
+      ::xsd::cxx::xml::dom::parser< char > p (e, true, false, true);
+      this->parse (p, f);
+    }
+  }
+
+  void Controller::
+  parse (::xsd::cxx::xml::dom::parser< char >& p,
+         ::xml_schema::flags f)
+  {
+    for (; p.more_content (); p.next_content (false))
+    {
+      const ::xercesc::DOMElement& i (p.cur_element ());
+      const ::xsd::cxx::xml::qualified_name< char > n (
+        ::xsd::cxx::xml::dom::name< char > (i));
+
+      // CalculatedVariable
+      //
+      if (n.name () == "CalculatedVariable" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      {
+        ::std::unique_ptr< CalculatedVariable_type > r (
+          CalculatedVariable_traits::create (i, f, this));
+
+        this->CalculatedVariable_.push_back (::std::move (r));
+        continue;
+      }
+
+      // Motor
+      //
+      if (n.name () == "Motor" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      {
+        ::std::unique_ptr< Motor_type > r (
+          Motor_traits::create (i, f, this));
+
+        this->Motor_.push_back (::std::move (r));
+        continue;
+      }
+
+      break;
+    }
+
+    while (p.more_attributes ())
+    {
+      const ::xercesc::DOMAttr& i (p.next_attribute ());
+      const ::xsd::cxx::xml::qualified_name< char > n (
+        ::xsd::cxx::xml::dom::name< char > (i));
+
+      if (n.name () == "name" && n.namespace_ ().empty ())
+      {
+        this->name_.set (name_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    if (!name_.present ())
+    {
+      throw ::xsd::cxx::tree::expected_attribute< char > (
+        "name",
+        "");
+    }
+  }
+
+  Controller* Controller::
+  _clone (::xml_schema::flags f,
+          ::xml_schema::container* c) const
+  {
+    return new class Controller (*this, f, c);
+  }
+
+  Controller& Controller::
+  operator= (const Controller& x)
+  {
+    if (this != &x)
+    {
+      static_cast< ::xml_schema::type& > (*this) = x;
+      this->CalculatedVariable_ = x.CalculatedVariable_;
+      this->Motor_ = x.Motor_;
+      this->name_ = x.name_;
+    }
+
+    return *this;
+  }
+
+  Controller::
+  ~Controller ()
+  {
+  }
+
+  // TemperatureProbe
+  //
+
+  TemperatureProbe::
+  TemperatureProbe (const name_type& name)
+  : ::xml_schema::type (),
+    CalculatedVariable_ (this),
+    name_ (name, this)
+  {
+  }
+
+  TemperatureProbe::
+  TemperatureProbe (const TemperatureProbe& x,
+                    ::xml_schema::flags f,
+                    ::xml_schema::container* c)
+  : ::xml_schema::type (x, f, c),
+    CalculatedVariable_ (x.CalculatedVariable_, f, this),
+    name_ (x.name_, f, this)
+  {
+  }
+
+  TemperatureProbe::
+  TemperatureProbe (const ::xercesc::DOMElement& e,
+                    ::xml_schema::flags f,
+                    ::xml_schema::container* c)
+  : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+    CalculatedVariable_ (this),
+    name_ (this)
+  {
+    if ((f & ::xml_schema::flags::base) == 0)
+    {
+      ::xsd::cxx::xml::dom::parser< char > p (e, true, false, true);
+      this->parse (p, f);
+    }
+  }
+
+  void TemperatureProbe::
+  parse (::xsd::cxx::xml::dom::parser< char >& p,
+         ::xml_schema::flags f)
+  {
+    for (; p.more_content (); p.next_content (false))
+    {
+      const ::xercesc::DOMElement& i (p.cur_element ());
+      const ::xsd::cxx::xml::qualified_name< char > n (
+        ::xsd::cxx::xml::dom::name< char > (i));
+
+      // CalculatedVariable
+      //
+      if (n.name () == "CalculatedVariable" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      {
+        ::std::unique_ptr< CalculatedVariable_type > r (
+          CalculatedVariable_traits::create (i, f, this));
+
+        this->CalculatedVariable_.push_back (::std::move (r));
+        continue;
+      }
+
+      break;
+    }
+
+    while (p.more_attributes ())
+    {
+      const ::xercesc::DOMAttr& i (p.next_attribute ());
+      const ::xsd::cxx::xml::qualified_name< char > n (
+        ::xsd::cxx::xml::dom::name< char > (i));
+
+      if (n.name () == "name" && n.namespace_ ().empty ())
+      {
+        this->name_.set (name_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    if (!name_.present ())
+    {
+      throw ::xsd::cxx::tree::expected_attribute< char > (
+        "name",
+        "");
+    }
+  }
+
+  TemperatureProbe* TemperatureProbe::
+  _clone (::xml_schema::flags f,
+          ::xml_schema::container* c) const
+  {
+    return new class TemperatureProbe (*this, f, c);
+  }
+
+  TemperatureProbe& TemperatureProbe::
+  operator= (const TemperatureProbe& x)
+  {
+    if (this != &x)
+    {
+      static_cast< ::xml_schema::type& > (*this) = x;
+      this->CalculatedVariable_ = x.CalculatedVariable_;
+      this->name_ = x.name_;
+    }
+
+    return *this;
+  }
+
+  TemperatureProbe::
+  ~TemperatureProbe ()
+  {
+  }
+
+  // AirFlowProbe
+  //
+
+  AirFlowProbe::
+  AirFlowProbe (const name_type& name)
+  : ::xml_schema::type (),
+    CalculatedVariable_ (this),
+    name_ (name, this)
+  {
+  }
+
+  AirFlowProbe::
+  AirFlowProbe (const AirFlowProbe& x,
+                ::xml_schema::flags f,
+                ::xml_schema::container* c)
+  : ::xml_schema::type (x, f, c),
+    CalculatedVariable_ (x.CalculatedVariable_, f, this),
+    name_ (x.name_, f, this)
+  {
+  }
+
+  AirFlowProbe::
+  AirFlowProbe (const ::xercesc::DOMElement& e,
+                ::xml_schema::flags f,
+                ::xml_schema::container* c)
+  : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+    CalculatedVariable_ (this),
+    name_ (this)
+  {
+    if ((f & ::xml_schema::flags::base) == 0)
+    {
+      ::xsd::cxx::xml::dom::parser< char > p (e, true, false, true);
+      this->parse (p, f);
+    }
+  }
+
+  void AirFlowProbe::
+  parse (::xsd::cxx::xml::dom::parser< char >& p,
+         ::xml_schema::flags f)
+  {
+    for (; p.more_content (); p.next_content (false))
+    {
+      const ::xercesc::DOMElement& i (p.cur_element ());
+      const ::xsd::cxx::xml::qualified_name< char > n (
+        ::xsd::cxx::xml::dom::name< char > (i));
+
+      // CalculatedVariable
+      //
+      if (n.name () == "CalculatedVariable" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      {
+        ::std::unique_ptr< CalculatedVariable_type > r (
+          CalculatedVariable_traits::create (i, f, this));
+
+        this->CalculatedVariable_.push_back (::std::move (r));
+        continue;
+      }
+
+      break;
+    }
+
+    while (p.more_attributes ())
+    {
+      const ::xercesc::DOMAttr& i (p.next_attribute ());
+      const ::xsd::cxx::xml::qualified_name< char > n (
+        ::xsd::cxx::xml::dom::name< char > (i));
+
+      if (n.name () == "name" && n.namespace_ ().empty ())
+      {
+        this->name_.set (name_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    if (!name_.present ())
+    {
+      throw ::xsd::cxx::tree::expected_attribute< char > (
+        "name",
+        "");
+    }
+  }
+
+  AirFlowProbe* AirFlowProbe::
+  _clone (::xml_schema::flags f,
+          ::xml_schema::container* c) const
+  {
+    return new class AirFlowProbe (*this, f, c);
+  }
+
+  AirFlowProbe& AirFlowProbe::
+  operator= (const AirFlowProbe& x)
+  {
+    if (this != &x)
+    {
+      static_cast< ::xml_schema::type& > (*this) = x;
+      this->CalculatedVariable_ = x.CalculatedVariable_;
+      this->name_ = x.name_;
+    }
+
+    return *this;
+  }
+
+  AirFlowProbe::
+  ~AirFlowProbe ()
+  {
+  }
+
   // Configuration
   //
 
@@ -2068,7 +2623,7 @@ namespace Configuration
   : ::xml_schema::type (),
     StandardMetaData_ (this),
     CalculatedVariableGenericFormula_ (this),
-    Motor_ (this),
+    Controller_ (this),
     CalculatedVariable_ (this)
   {
   }
@@ -2080,7 +2635,7 @@ namespace Configuration
   : ::xml_schema::type (x, f, c),
     StandardMetaData_ (x.StandardMetaData_, f, this),
     CalculatedVariableGenericFormula_ (x.CalculatedVariableGenericFormula_, f, this),
-    Motor_ (x.Motor_, f, this),
+    Controller_ (x.Controller_, f, this),
     CalculatedVariable_ (x.CalculatedVariable_, f, this)
   {
   }
@@ -2092,7 +2647,7 @@ namespace Configuration
   : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
     StandardMetaData_ (this),
     CalculatedVariableGenericFormula_ (this),
-    Motor_ (this),
+    Controller_ (this),
     CalculatedVariable_ (this)
   {
     if ((f & ::xml_schema::flags::base) == 0)
@@ -2137,14 +2692,14 @@ namespace Configuration
         continue;
       }
 
-      // Motor
+      // Controller
       //
-      if (n.name () == "Motor" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      if (n.name () == "Controller" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
       {
-        ::std::unique_ptr< Motor_type > r (
-          Motor_traits::create (i, f, this));
+        ::std::unique_ptr< Controller_type > r (
+          Controller_traits::create (i, f, this));
 
-        this->Motor_.push_back (::std::move (r));
+        this->Controller_.push_back (::std::move (r));
         continue;
       }
 
@@ -2178,7 +2733,7 @@ namespace Configuration
       static_cast< ::xml_schema::type& > (*this) = x;
       this->StandardMetaData_ = x.StandardMetaData_;
       this->CalculatedVariableGenericFormula_ = x.CalculatedVariableGenericFormula_;
-      this->Motor_ = x.Motor_;
+      this->Controller_ = x.Controller_;
       this->CalculatedVariable_ = x.CalculatedVariable_;
     }
 
@@ -2848,6 +3403,36 @@ namespace Configuration
       s << *b;
     }
 
+    // TemperatureProbe
+    //
+    for (Motor::TemperatureProbe_const_iterator
+         b (i.TemperatureProbe ().begin ()), n (i.TemperatureProbe ().end ());
+         b != n; ++b)
+    {
+      ::xercesc::DOMElement& s (
+        ::xsd::cxx::xml::dom::create_element (
+          "TemperatureProbe",
+          "http://cern.ch/quasar/Configuration",
+          e));
+
+      s << *b;
+    }
+
+    // AirFlowProbe
+    //
+    for (Motor::AirFlowProbe_const_iterator
+         b (i.AirFlowProbe ().begin ()), n (i.AirFlowProbe ().end ());
+         b != n; ++b)
+    {
+      ::xercesc::DOMElement& s (
+        ::xsd::cxx::xml::dom::create_element (
+          "AirFlowProbe",
+          "http://cern.ch/quasar/Configuration",
+          e));
+
+      s << *b;
+    }
+
     // name
     //
     {
@@ -2879,6 +3464,117 @@ namespace Configuration
           e));
 
       a << i.identifier ();
+    }
+  }
+
+  void
+  operator<< (::xercesc::DOMElement& e, const Controller& i)
+  {
+    e << static_cast< const ::xml_schema::type& > (i);
+
+    // CalculatedVariable
+    //
+    for (Controller::CalculatedVariable_const_iterator
+         b (i.CalculatedVariable ().begin ()), n (i.CalculatedVariable ().end ());
+         b != n; ++b)
+    {
+      ::xercesc::DOMElement& s (
+        ::xsd::cxx::xml::dom::create_element (
+          "CalculatedVariable",
+          "http://cern.ch/quasar/Configuration",
+          e));
+
+      s << *b;
+    }
+
+    // Motor
+    //
+    for (Controller::Motor_const_iterator
+         b (i.Motor ().begin ()), n (i.Motor ().end ());
+         b != n; ++b)
+    {
+      ::xercesc::DOMElement& s (
+        ::xsd::cxx::xml::dom::create_element (
+          "Motor",
+          "http://cern.ch/quasar/Configuration",
+          e));
+
+      s << *b;
+    }
+
+    // name
+    //
+    {
+      ::xercesc::DOMAttr& a (
+        ::xsd::cxx::xml::dom::create_attribute (
+          "name",
+          e));
+
+      a << i.name ();
+    }
+  }
+
+  void
+  operator<< (::xercesc::DOMElement& e, const TemperatureProbe& i)
+  {
+    e << static_cast< const ::xml_schema::type& > (i);
+
+    // CalculatedVariable
+    //
+    for (TemperatureProbe::CalculatedVariable_const_iterator
+         b (i.CalculatedVariable ().begin ()), n (i.CalculatedVariable ().end ());
+         b != n; ++b)
+    {
+      ::xercesc::DOMElement& s (
+        ::xsd::cxx::xml::dom::create_element (
+          "CalculatedVariable",
+          "http://cern.ch/quasar/Configuration",
+          e));
+
+      s << *b;
+    }
+
+    // name
+    //
+    {
+      ::xercesc::DOMAttr& a (
+        ::xsd::cxx::xml::dom::create_attribute (
+          "name",
+          e));
+
+      a << i.name ();
+    }
+  }
+
+  void
+  operator<< (::xercesc::DOMElement& e, const AirFlowProbe& i)
+  {
+    e << static_cast< const ::xml_schema::type& > (i);
+
+    // CalculatedVariable
+    //
+    for (AirFlowProbe::CalculatedVariable_const_iterator
+         b (i.CalculatedVariable ().begin ()), n (i.CalculatedVariable ().end ());
+         b != n; ++b)
+    {
+      ::xercesc::DOMElement& s (
+        ::xsd::cxx::xml::dom::create_element (
+          "CalculatedVariable",
+          "http://cern.ch/quasar/Configuration",
+          e));
+
+      s << *b;
+    }
+
+    // name
+    //
+    {
+      ::xercesc::DOMAttr& a (
+        ::xsd::cxx::xml::dom::create_attribute (
+          "name",
+          e));
+
+      a << i.name ();
     }
   }
 
@@ -2915,15 +3611,15 @@ namespace Configuration
       s << *b;
     }
 
-    // Motor
+    // Controller
     //
-    for (Configuration::Motor_const_iterator
-         b (i.Motor ().begin ()), n (i.Motor ().end ());
+    for (Configuration::Controller_const_iterator
+         b (i.Controller ().begin ()), n (i.Controller ().end ());
          b != n; ++b)
     {
       ::xercesc::DOMElement& s (
         ::xsd::cxx::xml::dom::create_element (
-          "Motor",
+          "Controller",
           "http://cern.ch/quasar/Configuration",
           e));
 

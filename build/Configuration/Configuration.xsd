@@ -76,11 +76,38 @@
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>
+            <xs:element name="TemperatureProbe" type="tns:TemperatureProbe"/>
+            <xs:element name="AirFlowProbe" type="tns:AirFlowProbe"/>
          </xs:choice>
       </xs:sequence>
       <xs:attribute name="name" type="tns:ObjectName" use="required"/>
       <xs:attribute name="refreshRate" use="required" type="xs:float"/>
       <xs:attribute name="identifier" use="required" type="xs:unsignedInt"/>
+   </xs:complexType>
+  <xs:complexType name="Controller">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>
+            <xs:element name="Motor" type="tns:Motor"/>
+         </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="tns:ObjectName" use="required"/>
+   </xs:complexType>
+  <xs:complexType name="TemperatureProbe">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>
+         </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="tns:ObjectName" use="required"/>
+   </xs:complexType>
+  <xs:complexType name="AirFlowProbe">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>
+         </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="tns:ObjectName" use="required"/>
    </xs:complexType>
   
   	
@@ -93,7 +120,7 @@
             <xs:element name="CalculatedVariableGenericFormula" type="tns:CalculatedVariableGenericFormula"/>
          </xs:choice>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element name="Motor" type="tns:Motor"/>
+            <xs:element name="Controller" type="tns:Controller"/>
          </xs:choice>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>

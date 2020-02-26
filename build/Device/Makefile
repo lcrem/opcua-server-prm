@@ -182,6 +182,60 @@ generated/Base_All.cpp.s:
 	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/generated/Base_All.cpp.s
 .PHONY : generated/Base_All.cpp.s
 
+src/DAirFlowProbe.o: src/DAirFlowProbe.cpp.o
+
+.PHONY : src/DAirFlowProbe.o
+
+# target to build an object file
+src/DAirFlowProbe.cpp.o:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DAirFlowProbe.cpp.o
+.PHONY : src/DAirFlowProbe.cpp.o
+
+src/DAirFlowProbe.i: src/DAirFlowProbe.cpp.i
+
+.PHONY : src/DAirFlowProbe.i
+
+# target to preprocess a source file
+src/DAirFlowProbe.cpp.i:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DAirFlowProbe.cpp.i
+.PHONY : src/DAirFlowProbe.cpp.i
+
+src/DAirFlowProbe.s: src/DAirFlowProbe.cpp.s
+
+.PHONY : src/DAirFlowProbe.s
+
+# target to generate assembly for a file
+src/DAirFlowProbe.cpp.s:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DAirFlowProbe.cpp.s
+.PHONY : src/DAirFlowProbe.cpp.s
+
+src/DController.o: src/DController.cpp.o
+
+.PHONY : src/DController.o
+
+# target to build an object file
+src/DController.cpp.o:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DController.cpp.o
+.PHONY : src/DController.cpp.o
+
+src/DController.i: src/DController.cpp.i
+
+.PHONY : src/DController.i
+
+# target to preprocess a source file
+src/DController.cpp.i:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DController.cpp.i
+.PHONY : src/DController.cpp.i
+
+src/DController.s: src/DController.cpp.s
+
+.PHONY : src/DController.s
+
+# target to generate assembly for a file
+src/DController.cpp.s:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DController.cpp.s
+.PHONY : src/DController.cpp.s
+
 src/DMotor.o: src/DMotor.cpp.o
 
 .PHONY : src/DMotor.o
@@ -236,6 +290,33 @@ src/DRoot.cpp.s:
 	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DRoot.cpp.s
 .PHONY : src/DRoot.cpp.s
 
+src/DTemperatureProbe.o: src/DTemperatureProbe.cpp.o
+
+.PHONY : src/DTemperatureProbe.o
+
+# target to build an object file
+src/DTemperatureProbe.cpp.o:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DTemperatureProbe.cpp.o
+.PHONY : src/DTemperatureProbe.cpp.o
+
+src/DTemperatureProbe.i: src/DTemperatureProbe.cpp.i
+
+.PHONY : src/DTemperatureProbe.i
+
+# target to preprocess a source file
+src/DTemperatureProbe.cpp.i:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DTemperatureProbe.cpp.i
+.PHONY : src/DTemperatureProbe.cpp.i
+
+src/DTemperatureProbe.s: src/DTemperatureProbe.cpp.s
+
+.PHONY : src/DTemperatureProbe.s
+
+# target to generate assembly for a file
+src/DTemperatureProbe.cpp.s:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DTemperatureProbe.cpp.s
+.PHONY : src/DTemperatureProbe.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -250,12 +331,21 @@ help:
 	@echo "... generated/Base_All.o"
 	@echo "... generated/Base_All.i"
 	@echo "... generated/Base_All.s"
+	@echo "... src/DAirFlowProbe.o"
+	@echo "... src/DAirFlowProbe.i"
+	@echo "... src/DAirFlowProbe.s"
+	@echo "... src/DController.o"
+	@echo "... src/DController.i"
+	@echo "... src/DController.s"
 	@echo "... src/DMotor.o"
 	@echo "... src/DMotor.i"
 	@echo "... src/DMotor.s"
 	@echo "... src/DRoot.o"
 	@echo "... src/DRoot.i"
 	@echo "... src/DRoot.s"
+	@echo "... src/DTemperatureProbe.o"
+	@echo "... src/DTemperatureProbe.i"
+	@echo "... src/DTemperatureProbe.s"
 .PHONY : help
 
 

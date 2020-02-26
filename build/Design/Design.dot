@@ -39,15 +39,113 @@
 			
 				<tr>
 				
+				<td align="left" width="0"><font point-size="16">←</font></td>
+				<td align="left" width="0"><font point-size="10" color="blue" >CV</font></td>
+				<td align="left" >refreshRate</td>
+				<td align="left" >: Float</td>
+				</tr>
+			
+				<tr>
+				
 				<td align="left" width="0"></td>
 				<td align="left"><font point-size="10" color="red" > CE</font></td>
-				<td align="left" >Identifier</td>
+				<td align="left" >identifier</td>
 				<td align="left" >: UInt32</td>
 				</tr>
 			
 
 		</table>>]
 		
+	
+	class_Controller [shape=none,margin=0,label=<
+		<table border="1" cellspacing="0" cellpadding="2" cellborder="0" >
+			<tr > 
+			        <td width="0"></td>
+				<td width="0"></td>
+				<td colspan="2">
+					<b>
+					<font point-size="18" >Controller</font>
+					
+						<font point-size="10" color="blue" >DL=1</font>
+					
+					</b> 
+				</td>  
+			</tr>
+			
+			<hr/>
+
+			
+			    <tr> <td colspan="3"> </td> </tr>
+			  
+
+		</table>>]
+		
+	
+	class_TemperatureProbe [shape=none,margin=0,label=<
+		<table border="1" cellspacing="0" cellpadding="2" cellborder="0" >
+			<tr > 
+			        <td width="0"></td>
+				<td width="0"></td>
+				<td colspan="2">
+					<b>
+					<font point-size="18" >TemperatureProbe</font>
+					
+						<font point-size="10" color="blue" >DL=1</font>
+					
+					</b> 
+				</td>  
+			</tr>
+			
+			<hr/>
+
+			
+			    <tr> <td colspan="3"> </td> </tr>
+			  
+
+		</table>>]
+		
+	
+	class_AirFlowProbe [shape=none,margin=0,label=<
+		<table border="1" cellspacing="0" cellpadding="2" cellborder="0" >
+			<tr > 
+			        <td width="0"></td>
+				<td width="0"></td>
+				<td colspan="2">
+					<b>
+					<font point-size="18" >AirFlowProbe</font>
+					
+						<font point-size="10" color="blue" >DL=1</font>
+					
+					</b> 
+				</td>  
+			</tr>
+			
+			<hr/>
+
+			
+			    <tr> <td colspan="3"> </td> </tr>
+			  
+
+		</table>>]
+		
+	
+	
+	class_Motor
+	-> 
+	
+	class_TemperatureProbe [arrowtail=odiamond,dir=back,label="0..*"]
+	
+	
+	class_Motor
+	-> 
+	
+	class_AirFlowProbe [arrowtail=odiamond,dir=back,label="0..*"]
+	
+	
+	class_Controller
+	-> 
+	
+	class_Motor [arrowtail=odiamond,dir=back,label="0..*"]
 	
 
 
@@ -57,7 +155,7 @@
 	class_ROOT
 	-> 
 	
-	class_Motor [arrowtail=odiamond,dir=back,label="0..*"]
+	class_Controller [arrowtail=odiamond,dir=back,label="0..*"]
 	
 	}
 	
