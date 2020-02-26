@@ -33,6 +33,7 @@
   	<d:devicelogic></d:devicelogic>
   </d:class>
   <d:class name="OldTypeMotor">
+  	<d:hasobjects instantiateUsing="configuration" class="TemperatureProbe"></d:hasobjects>
   </d:class>
   <d:root>
   	<d:hasobjects instantiateUsing="configuration" class="Controller"></d:hasobjects>
