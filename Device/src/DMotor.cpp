@@ -96,11 +96,12 @@ namespace Device
   {
 	  LOG(Log::INF) << "Motor ID = " << identifier() ;
 	  // from the server to the clients
-	  getAddressSpaceLink()->setRotationalSpeed(rand(), OpcUa_Good);
+	  getAddressSpaceLink()->setRotationalSpeed(500+rand()%20, OpcUa_Good);
 
 	  // from the clients to the server
 	  OpcUa_Double rotationalSpeedSetPoint = getAddressSpaceLink()->getRotationalSpeedSetPoint();
 	  LOG(Log::INF) << "update(), setpoint = " << rotationalSpeedSetPoint;
+
 
   }
 
