@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration xmlns="http://cern.ch/quasar/Configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Configuration ../Configuration/Configuration.xsd ">
-	<CalculatedVariableGenericFormula name="calibratedRotationSpeed" formula="$thisObjectAddress.rotationalSpeed+$parentObjectAddress(numLevelsUp=1).RPM_Calibration_Offset"></CalculatedVariableGenericFormula>
+<configuration xmlns="http://cern.ch/quasar/Configuration"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://cern.ch/quasar/Configuration ../Configuration/Configuration.xsd ">
+	<CalculatedVariableGenericFormula
+		name="calibratedRotationSpeed"
+		formula="$thisObjectAddress.rotationalSpeed+$parentObjectAddress(numLevelsUp=1).RPM_Calibration_Offset"></CalculatedVariableGenericFormula>
 	<Controller name="controller1">
-	<CalculatedVariable name="RPM_Calibration_Offset" value="-100"></CalculatedVariable>
-	<Motor name="m1" identifier="1" refreshRate="1">
-		<CalculatedVariable name="calibratedRotationalSpeed" value="$applyGenerticFormula(calibratedRotationSpeed)"></CalculatedVariable>
-	</Motor>
-	<Motor name="m2" identifier="2" refreshRate="1.5">
-	</Motor>
+		<CalculatedVariable name="RPM_Calibration_Offset"
+			value="-100"></CalculatedVariable>
+		<Motor name="m1" identifier="1" refreshRate="1">
+			<CalculatedVariable
+				name="calibratedRotationalSpeed"
+				value="$applyGenerticFormula(calibratedRotationSpeed)"></CalculatedVariable>
+		</Motor>
+		<Motor name="m2" identifier="2" refreshRate="1.5">
+		</Motor>
 	</Controller>
-	</configuration>
+</configuration>
