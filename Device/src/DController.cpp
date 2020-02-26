@@ -83,7 +83,10 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
 
-
-
+  void DController::update()
+  {
+	  for (DMotor *motor : motors())
+		 motor->Update();
+  }
 
 }
