@@ -14,6 +14,9 @@
   	</d:cachevariable>
   	<d:configentry dataType="OpcUa_UInt32" name="identifier"
   		storedInDeviceObject="true">
+  		<d:configRestriction>
+  			<d:restrictionByBounds minExclusive="0.0"
+  				maxInclusive="3" /></d:configRestriction>
   	</d:configentry>
   	<d:cachevariable initializeWith="configuration"
   		dataType="OpcUa_Float" name="refreshRate" nullPolicy="nullAllowed"
