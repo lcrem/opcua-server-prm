@@ -6,6 +6,7 @@
   		dataType="OpcUa_Double" name="rotationalSpeed"
   		nullPolicy="nullAllowed" addressSpaceWrite="forbidden"
   		initialStatus="OpcUa_BadWaitingForInitialData">
+  		<d:documentation>Expressed in RPMs. Uncalibrated value.</d:documentation>
   	</d:cachevariable>
   	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Double" name="rotationalSpeedSetPoint"
@@ -16,6 +17,7 @@
   		storedInDeviceObject="true">
   		<d:configRestriction>
   			<d:restrictionByBounds maxInclusive="3" minInclusive="0"/></d:configRestriction>
+  		<d:documentation>This should match the slot at which the motor is inserted</d:documentation>
   	</d:configentry>
   	<d:cachevariable initializeWith="configuration"
   		dataType="OpcUa_Float" name="refreshRate" nullPolicy="nullAllowed"
@@ -29,6 +31,7 @@
   	<d:hasobjects instantiateUsing="configuration"
   		class="AirFlowProbe" minOccurs="1" maxOccurs="1">
   	</d:hasobjects>
+  	<d:documentation>This class covers motors of type A and B.</d:documentation>
   </d:class>
   <d:class name="Controller">
   	<d:devicelogic></d:devicelogic>
