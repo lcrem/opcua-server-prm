@@ -8,12 +8,12 @@
 	<Controller name="controller1">
 		<CalculatedVariable name="RPM_Calibration_Offset"
 			value="-100"></CalculatedVariable>
-		<Motor name="m1" identifier="1" refreshRate="1">
+		<Motor name="m1" identifier="1" refreshRate="1000">
 			<CalculatedVariable
 				name="calibratedRotationalSpeed"
 				value="$applyGenericFormula(calibratedRotationSpeed)"></CalculatedVariable>
 		</Motor>
-		<Motor name="m2" identifier="2" refreshRate="1.5">
+		<Motor name="m2" identifier="2" refreshRate="2000">
 			<CalculatedVariable
 				name="calibratedRotationalSpeed"
 				value="$applyGenericFormula(calibratedRotationSpeed)"></CalculatedVariable>

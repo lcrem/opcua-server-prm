@@ -31,6 +31,10 @@
   <d:class name="Controller">
   	<d:devicelogic></d:devicelogic>
   	<d:hasobjects instantiateUsing="configuration" class="Motor"></d:hasobjects>
+  	<d:configentry dataType="UaString" name="address">
+  		<d:configRestriction>
+  			<d:restrictionByPattern pattern="usb[0-9]+" ></d:restrictionByPattern></d:configRestriction>
+  	</d:configentry>
   </d:class>
   <d:class name="TemperatureProbe">
   	<d:devicelogic></d:devicelogic>
