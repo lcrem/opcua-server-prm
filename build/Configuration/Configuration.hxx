@@ -271,6 +271,9 @@ namespace Configuration
   class TemperatureProbe;
   class AirFlowProbe;
   class Configuration;
+  class refreshRate;
+  class identifier;
+  class address;
 }
 
 
@@ -1189,7 +1192,7 @@ namespace Configuration
 
     // refreshRate
     //
-    typedef ::xml_schema::float_ refreshRate_type;
+    typedef ::Configuration::refreshRate refreshRate_type;
     typedef ::xsd::cxx::tree::traits< refreshRate_type, char > refreshRate_traits;
 
     const refreshRate_type&
@@ -1201,9 +1204,12 @@ namespace Configuration
     void
     refreshRate (const refreshRate_type& x);
 
+    void
+    refreshRate (::std::unique_ptr< refreshRate_type > p);
+
     // identifier
     //
-    typedef ::xml_schema::unsigned_int identifier_type;
+    typedef ::Configuration::identifier identifier_type;
     typedef ::xsd::cxx::tree::traits< identifier_type, char > identifier_traits;
 
     const identifier_type&
@@ -1214,6 +1220,9 @@ namespace Configuration
 
     void
     identifier (const identifier_type& x);
+
+    void
+    identifier (::std::unique_ptr< identifier_type > p);
 
     // Constructors.
     //
@@ -1309,9 +1318,27 @@ namespace Configuration
     void
     name (::std::unique_ptr< name_type > p);
 
+    // address
+    //
+    typedef ::Configuration::address address_type;
+    typedef ::xsd::cxx::tree::traits< address_type, char > address_traits;
+
+    const address_type&
+    address () const;
+
+    address_type&
+    address ();
+
+    void
+    address (const address_type& x);
+
+    void
+    address (::std::unique_ptr< address_type > p);
+
     // Constructors.
     //
-    Controller (const name_type&);
+    Controller (const name_type&,
+                const address_type&);
 
     Controller (const ::xercesc::DOMElement& e,
                 ::xml_schema::flags f = 0,
@@ -1342,6 +1369,7 @@ namespace Configuration
     CalculatedVariable_sequence CalculatedVariable_;
     Motor_sequence Motor_;
     ::xsd::cxx::tree::one< name_type > name_;
+    ::xsd::cxx::tree::one< address_type > address_;
   };
 
   class TemperatureProbe: public ::xml_schema::type
@@ -1595,6 +1623,103 @@ namespace Configuration
     CalculatedVariableGenericFormula_sequence CalculatedVariableGenericFormula_;
     Controller_sequence Controller_;
     CalculatedVariable_sequence CalculatedVariable_;
+  };
+
+  class refreshRate: public ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type >
+  {
+    public:
+    refreshRate (::xml_schema::float_ v);
+
+    refreshRate (const ::xercesc::DOMElement& e,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+    refreshRate (const ::xercesc::DOMAttr& a,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+    refreshRate (const ::std::string& s,
+                 const ::xercesc::DOMElement* e,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+    refreshRate (const refreshRate& x,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+    virtual refreshRate*
+    _clone (::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0) const;
+  };
+
+  class identifier: public ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >
+  {
+    public:
+    // Constructors.
+    //
+    identifier (const ::xml_schema::unsigned_int&);
+
+    identifier (const ::xercesc::DOMElement& e,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+    identifier (const ::xercesc::DOMAttr& a,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+    identifier (const ::std::string& s,
+                const ::xercesc::DOMElement* e,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+    identifier (const identifier& x,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+    virtual identifier*
+    _clone (::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0) const;
+
+    virtual 
+    ~identifier ();
+  };
+
+  class address: public ::xml_schema::string
+  {
+    public:
+    // Constructors.
+    //
+    address ();
+
+    address (const char*);
+
+    address (const ::std::string&);
+
+    address (const ::xml_schema::string&);
+
+    address (const ::xercesc::DOMElement& e,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+    address (const ::xercesc::DOMAttr& a,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+    address (const ::std::string& s,
+             const ::xercesc::DOMElement* e,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+    address (const address& x,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+    virtual address*
+    _clone (::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0) const;
+
+    virtual 
+    ~address ();
   };
 }
 
@@ -1856,6 +1981,36 @@ namespace Configuration
   configuration (const ::Configuration::Configuration& x, 
                  const ::xml_schema::namespace_infomap& m = ::xml_schema::namespace_infomap (),
                  ::xml_schema::flags f = 0);
+
+  void
+  operator<< (::xercesc::DOMElement&, const refreshRate&);
+
+  void
+  operator<< (::xercesc::DOMAttr&, const refreshRate&);
+
+  void
+  operator<< (::xml_schema::list_stream&,
+              const refreshRate&);
+
+  void
+  operator<< (::xercesc::DOMElement&, const identifier&);
+
+  void
+  operator<< (::xercesc::DOMAttr&, const identifier&);
+
+  void
+  operator<< (::xml_schema::list_stream&,
+              const identifier&);
+
+  void
+  operator<< (::xercesc::DOMElement&, const address&);
+
+  void
+  operator<< (::xercesc::DOMAttr&, const address&);
+
+  void
+  operator<< (::xml_schema::list_stream&,
+              const address&);
 }
 
 #include <xsd/cxx/post.hxx>

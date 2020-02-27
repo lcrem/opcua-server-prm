@@ -728,6 +728,12 @@ namespace Configuration
     this->refreshRate_.set (x);
   }
 
+  void Motor::
+  refreshRate (::std::unique_ptr< refreshRate_type > x)
+  {
+    this->refreshRate_.set (std::move (x));
+  }
+
   const Motor::identifier_type& Motor::
   identifier () const
   {
@@ -744,6 +750,12 @@ namespace Configuration
   identifier (const identifier_type& x)
   {
     this->identifier_.set (x);
+  }
+
+  void Motor::
+  identifier (::std::unique_ptr< identifier_type > x)
+  {
+    this->identifier_.set (std::move (x));
   }
 
 
@@ -808,6 +820,30 @@ namespace Configuration
   name (::std::unique_ptr< name_type > x)
   {
     this->name_.set (std::move (x));
+  }
+
+  const Controller::address_type& Controller::
+  address () const
+  {
+    return this->address_.get ();
+  }
+
+  Controller::address_type& Controller::
+  address ()
+  {
+    return this->address_.get ();
+  }
+
+  void Controller::
+  address (const address_type& x)
+  {
+    this->address_.set (x);
+  }
+
+  void Controller::
+  address (::std::unique_ptr< address_type > x)
+  {
+    this->address_.set (std::move (x));
   }
 
 
@@ -989,6 +1025,31 @@ namespace Configuration
   {
     this->CalculatedVariable_ = s;
   }
+
+
+  // refreshRate
+  // 
+
+  refreshRate::
+  refreshRate (::xml_schema::float_ v): ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type > (v)
+  {
+  }
+
+  refreshRate::
+  refreshRate (const refreshRate& v,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type > (v, f, c)
+  {
+  }
+
+
+  // identifier
+  // 
+
+
+  // address
+  // 
 }
 
 #include <xsd/cxx/xml/dom/parsing-source.hxx>
@@ -2286,11 +2347,13 @@ namespace Configuration
   //
 
   Controller::
-  Controller (const name_type& name)
+  Controller (const name_type& name,
+              const address_type& address)
   : ::xml_schema::type (),
     CalculatedVariable_ (this),
     Motor_ (this),
-    name_ (name, this)
+    name_ (name, this),
+    address_ (address, this)
   {
   }
 
@@ -2301,7 +2364,8 @@ namespace Configuration
   : ::xml_schema::type (x, f, c),
     CalculatedVariable_ (x.CalculatedVariable_, f, this),
     Motor_ (x.Motor_, f, this),
-    name_ (x.name_, f, this)
+    name_ (x.name_, f, this),
+    address_ (x.address_, f, this)
   {
   }
 
@@ -2312,7 +2376,8 @@ namespace Configuration
   : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
     CalculatedVariable_ (this),
     Motor_ (this),
-    name_ (this)
+    name_ (this),
+    address_ (this)
   {
     if ((f & ::xml_schema::flags::base) == 0)
     {
@@ -2367,12 +2432,25 @@ namespace Configuration
         this->name_.set (name_traits::create (i, f, this));
         continue;
       }
+
+      if (n.name () == "address" && n.namespace_ ().empty ())
+      {
+        this->address_.set (address_traits::create (i, f, this));
+        continue;
+      }
     }
 
     if (!name_.present ())
     {
       throw ::xsd::cxx::tree::expected_attribute< char > (
         "name",
+        "");
+    }
+
+    if (!address_.present ())
+    {
+      throw ::xsd::cxx::tree::expected_attribute< char > (
+        "address",
         "");
     }
   }
@@ -2393,6 +2471,7 @@ namespace Configuration
       this->CalculatedVariable_ = x.CalculatedVariable_;
       this->Motor_ = x.Motor_;
       this->name_ = x.name_;
+      this->address_ = x.address_;
     }
 
     return *this;
@@ -2742,6 +2821,167 @@ namespace Configuration
 
   Configuration::
   ~Configuration ()
+  {
+  }
+
+  // refreshRate
+  //
+
+  refreshRate::
+  refreshRate (const ::xercesc::DOMElement& e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type > (e, f, c)
+  {
+  }
+
+  refreshRate::
+  refreshRate (const ::xercesc::DOMAttr& a,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type > (a, f, c)
+  {
+  }
+
+  refreshRate::
+  refreshRate (const ::std::string& s,
+               const ::xercesc::DOMElement* e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type > (s, e, f, c)
+  {
+  }
+
+  refreshRate* refreshRate::
+  _clone (::xml_schema::flags f,
+          ::xml_schema::container* c) const
+  {
+    return new class refreshRate (*this, f, c);
+  }
+
+  // identifier
+  //
+
+  identifier::
+  identifier (const ::xml_schema::unsigned_int& _xsd_unsigned_int_base)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (_xsd_unsigned_int_base)
+  {
+  }
+
+  identifier::
+  identifier (const identifier& x,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (x, f, c)
+  {
+  }
+
+  identifier::
+  identifier (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (e, f, c)
+  {
+  }
+
+  identifier::
+  identifier (const ::xercesc::DOMAttr& a,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (a, f, c)
+  {
+  }
+
+  identifier::
+  identifier (const ::std::string& s,
+              const ::xercesc::DOMElement* e,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (s, e, f, c)
+  {
+  }
+
+  identifier* identifier::
+  _clone (::xml_schema::flags f,
+          ::xml_schema::container* c) const
+  {
+    return new class identifier (*this, f, c);
+  }
+
+  identifier::
+  ~identifier ()
+  {
+  }
+
+  // address
+  //
+
+  address::
+  address ()
+  : ::xml_schema::string ()
+  {
+  }
+
+  address::
+  address (const char* _xsd_string_base)
+  : ::xml_schema::string (_xsd_string_base)
+  {
+  }
+
+  address::
+  address (const ::std::string& _xsd_string_base)
+  : ::xml_schema::string (_xsd_string_base)
+  {
+  }
+
+  address::
+  address (const ::xml_schema::string& _xsd_string_base)
+  : ::xml_schema::string (_xsd_string_base)
+  {
+  }
+
+  address::
+  address (const address& x,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+  : ::xml_schema::string (x, f, c)
+  {
+  }
+
+  address::
+  address (const ::xercesc::DOMElement& e,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+  : ::xml_schema::string (e, f, c)
+  {
+  }
+
+  address::
+  address (const ::xercesc::DOMAttr& a,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+  : ::xml_schema::string (a, f, c)
+  {
+  }
+
+  address::
+  address (const ::std::string& s,
+           const ::xercesc::DOMElement* e,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+  : ::xml_schema::string (s, e, f, c)
+  {
+  }
+
+  address* address::
+  _clone (::xml_schema::flags f,
+          ::xml_schema::container* c) const
+  {
+    return new class address (*this, f, c);
+  }
+
+  address::
+  ~address ()
   {
   }
 }
@@ -3512,6 +3752,17 @@ namespace Configuration
 
       a << i.name ();
     }
+
+    // address
+    //
+    {
+      ::xercesc::DOMAttr& a (
+        ::xsd::cxx::xml::dom::create_attribute (
+          "address",
+          e));
+
+      a << i.address ();
+    }
   }
 
   void
@@ -3788,6 +4039,63 @@ namespace Configuration
 
     ::Configuration::configuration (*d, s, f);
     return d;
+  }
+
+  void
+  operator<< (::xercesc::DOMElement& e, const refreshRate& i)
+  {
+    e << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type >& > (i);
+  }
+
+  void
+  operator<< (::xercesc::DOMAttr& a, const refreshRate& i)
+  {
+    a << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type >& > (i);
+  }
+
+  void
+  operator<< (::xml_schema::list_stream& l,
+              const refreshRate& i)
+  {
+    l << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::float_, char, ::xml_schema::simple_type >& > (i);
+  }
+
+  void
+  operator<< (::xercesc::DOMElement& e, const identifier& i)
+  {
+    e << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
+  }
+
+  void
+  operator<< (::xercesc::DOMAttr& a, const identifier& i)
+  {
+    a << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
+  }
+
+  void
+  operator<< (::xml_schema::list_stream& l,
+              const identifier& i)
+  {
+    l << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
+  }
+
+  void
+  operator<< (::xercesc::DOMElement& e, const address& i)
+  {
+    e << static_cast< const ::xml_schema::string& > (i);
+  }
+
+  void
+  operator<< (::xercesc::DOMAttr& a, const address& i)
+  {
+    a << static_cast< const ::xml_schema::string& > (i);
+  }
+
+  void
+  operator<< (::xml_schema::list_stream& l,
+              const address& i)
+  {
+    l << static_cast< const ::xml_schema::string& > (i);
   }
 }
 

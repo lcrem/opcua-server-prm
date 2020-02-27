@@ -37,8 +37,22 @@
          </xs:choice>
       </xs:sequence>
       <xs:attribute name="name" type="tns:ObjectName" use="required"/>
-      <xs:attribute name="refreshRate" use="required" type="xs:float"/>
-      <xs:attribute name="identifier" use="required" type="xs:unsignedInt"/>
+      <xs:attribute name="refreshRate" use="required">
+         <xs:simpleType>
+            <xs:restriction base="xs:float">
+               <xs:enumeration value="1000"/>
+               <xs:enumeration value="2000"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="identifier" use="required">
+         <xs:simpleType>
+            <xs:restriction base="xs:unsignedInt">
+               <xs:minInclusive value="0"/>
+               <xs:maxInclusive value="3"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
    </xs:complexType>
   <xs:complexType name="Controller">
       <xs:sequence>
@@ -48,6 +62,13 @@
          </xs:choice>
       </xs:sequence>
       <xs:attribute name="name" type="tns:ObjectName" use="required"/>
+      <xs:attribute name="address" use="required">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:pattern value="usb[0-9]+"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
    </xs:complexType>
   <xs:complexType name="TemperatureProbe">
       <xs:sequence>
