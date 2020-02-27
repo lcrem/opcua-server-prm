@@ -26,11 +26,15 @@
   					value="2000" /></d:restrictionByEnumeration></d:configRestriction>
   	</d:cachevariable>
   	<d:hasobjects instantiateUsing="configuration" class="TemperatureProbe"></d:hasobjects>
-  	<d:hasobjects instantiateUsing="configuration" class="AirFlowProbe"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration"
+  		class="AirFlowProbe" minOccurs="1" maxOccurs="1">
+  	</d:hasobjects>
   </d:class>
   <d:class name="Controller">
   	<d:devicelogic></d:devicelogic>
-  	<d:hasobjects instantiateUsing="configuration" class="Motor"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="Motor"
+  		maxOccurs="4" minOccurs="0">
+  	</d:hasobjects>
   	<d:configentry dataType="UaString" name="address">
   		<d:configRestriction>
   			<d:restrictionByPattern pattern="usb[0-9]+" ></d:restrictionByPattern></d:configRestriction>
