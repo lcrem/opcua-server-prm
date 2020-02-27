@@ -5,7 +5,7 @@
 	<CalculatedVariableGenericFormula
 		name="calibratedRotationSpeed"
 		formula="$thisObjectAddress.rotationalSpeed+$parentObjectAddress(numLevelsUp=1).RPM_Calibration_Offset"></CalculatedVariableGenericFormula>
-	<Controller name="controller1" address="ssh2">
+	<Controller name="controller1" address="usb2">
 		<CalculatedVariable name="RPM_Calibration_Offset"
 			value="-100"></CalculatedVariable>
 		<Motor name="m1" identifier="1" refreshRate="1000">
