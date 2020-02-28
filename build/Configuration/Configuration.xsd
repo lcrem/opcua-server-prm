@@ -90,6 +90,9 @@
          </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="identifier" use="required">
+         <xs:annotation>
+            <xs:documentation>This should match the slot at which the motor is inserted</xs:documentation>
+         </xs:annotation>
          <xs:simpleType>
             <xs:restriction base="xs:unsignedInt">
                <xs:minInclusive value="0"/>
