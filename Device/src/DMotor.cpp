@@ -91,7 +91,15 @@ namespace Device
 
   UaStatus DMotor::callTurnOn (OpcUa_Double rotationalSpeedSetPoint)
   {
-    return OpcUa_BadNotImplemented;
+	  if (m_rotationalSpeed > 0.1 )
+		  return OpcUa_BadInvalidState;
+
+	  // send turn on command ...
+
+	  // ...
+	  getAddressSpaceLink()->setRotationalSpeedSetPoint(rotationalSpeedSetPoint, OpcUaGood);
+
+    return OpcUa_Good;
   }
 
 
@@ -105,7 +113,10 @@ namespace Device
   {
 	  LOG(Log::INF) << "Motor ID = " << identifier() ;
 	  // from the server to the clients
-	  getAddressSpaceLink()->setRotationalSpeed(500+rand()%20, OpcUa_Good);
+
+	  m_rotationalSpeed = 0.9*m_rotationalSpeed + 0.1*getAddressSpaceLink()->GetRotationalSpeedSetPoint();
+
+	  getAddressSpaceLink()->setRotationalSped(m_rotationalSpeed, OpcUa_Good);
 
 	  // from the clients to the server
 	  OpcUa_Double rotationalSpeedSetPoint = getAddressSpaceLink()->getRotationalSpeedSetPoint();
