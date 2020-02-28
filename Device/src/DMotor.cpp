@@ -97,7 +97,7 @@ namespace Device
 	  // send turn on command ...
 
 	  // ...
-	  getAddressSpaceLink()->setRotationalSpeedSetPoint(rotationalSpeedSetPoint, OpcUaGood);
+	  getAddressSpaceLink()->setRotationalSpeedSetPoint(rotationalSpeedSetPoint, OpcUa_Good);
 
     return OpcUa_Good;
   }
@@ -114,9 +114,9 @@ namespace Device
 	  LOG(Log::INF) << "Motor ID = " << identifier() ;
 	  // from the server to the clients
 
-	  m_rotationalSpeed = 0.9*m_rotationalSpeed + 0.1*getAddressSpaceLink()->GetRotationalSpeedSetPoint();
+	  m_rotationalSpeed = 0.9*m_rotationalSpeed + 0.1*getAddressSpaceLink()->getRotationalSpeedSetPoint();
 
-	  getAddressSpaceLink()->setRotationalSped(m_rotationalSpeed, OpcUa_Good);
+	  getAddressSpaceLink()->setRotationalSpeed(m_rotationalSpeed, OpcUa_Good);
 
 	  // from the clients to the server
 	  OpcUa_Double rotationalSpeedSetPoint = getAddressSpaceLink()->getRotationalSpeedSetPoint();
