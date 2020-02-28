@@ -106,7 +106,11 @@ return OpcUa_Good;
   UaStatus DMotor::callGetDiagnostics (UaString & serialNumber,
 				       UaByteString & firmware)
   {
-    return OpcUa_BadNotImplemented;
+	OpcUa_Byte firmwareAsBytes[] = {0x33, 0x44, 0x55};
+	firmware.setByteString(sizeof firmwareAsBytes, firmwareAsBytes);
+	serialNumber = "ABCDEFGHIJL";
+
+    return OpcUa_Good;
   }
 
 
