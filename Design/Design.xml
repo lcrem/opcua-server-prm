@@ -55,6 +55,7 @@
   	<d:devicelogic></d:devicelogic>
   </d:class>
   <d:class name="PurityMonitor">
+  	<d:devicelogic></d:devicelogic>
   	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="UaString" name="timestamp" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
