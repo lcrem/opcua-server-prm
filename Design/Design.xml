@@ -58,6 +58,7 @@
   	<d:devicelogic></d:devicelogic>
   </d:class>
   <d:root>
-  	<d:hasobjects instantiateUsing="configuration" class="Controller"></d:hasobjects></d:root>
-  	<d:hasobjects instantiateUsing="configuration" class="PurityMonitor"></d:hasobjects></d:root>
+  	<d:hasobjects instantiateUsing="configuration" class="Controller"></d:hasobjects>
+  	<d:hasobjects instantiateUsing="configuration" class="PurityMonitor"></d:hasobjects>
+  </d:root>
 </d:design>
