@@ -55,12 +55,12 @@
   	<d:devicelogic></d:devicelogic>
   </d:class>
   <d:class name="PurityMonitor">
-  	<d:cachevariable initializeWith="configuration"
+  	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="UaString" name="timestamp" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden">
   		<d:documentation>Timestamp as a string</d:documentation>
   	</d:cachevariable>
-  	<d:cachevariable initializeWith="configuration"
+  	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Int16" name="runningConfiguration"
   		nullPolicy="nullAllowed" addressSpaceWrite="delegated"
   		initialStatus="OpcUa_Good">
@@ -74,7 +74,7 @@
   		<d:documentation>Choose running configuration for purity monitors
   			lamp only, 1 is 40.20.60 V/cm, 2 is 60.30.90 V/cm</d:documentation>
   	</d:cachevariable>
-  	<d:cachevariable initializeWith="configuration"
+  	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Int16" name="takeData" nullPolicy="nullAllowed"
   		addressSpaceWrite="delegated" initialStatus="OpcUa_Good">
   		<d:configRestriction>
@@ -85,7 +85,7 @@
   		</d:configRestriction>
   		<d:documentation></d:documentation>
   	</d:cachevariable>
-  	  	<d:cachevariable initializeWith="configuration"
+  	  	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Int16" name="doAnalysis" nullPolicy="nullAllowed"
   		addressSpaceWrite="delegated" initialStatus="OpcUa_Good">
   		<d:configRestriction>
@@ -96,7 +96,7 @@
   		</d:configRestriction>
   		<d:documentation></d:documentation>
   	</d:cachevariable>
-  	  	<d:cachevariable initializeWith="configuration"
+  	  	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Int16" name="available" nullPolicy="nullAllowed"
   		addressSpaceWrite="forbidden" initialStatus="OpcUa_Good">
   		<d:configRestriction>
