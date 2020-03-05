@@ -119,11 +119,10 @@ namespace Device
 
   void DPurityMonitor::update()
   {
-	  OpcUa_Int16 tmpAvailable = getAddressSpaceLink()->getAvailable();
 
-	  if ( tmpAvailable == 1 ) {
+	  if ( getAddressSpaceLink()->getBusy()== 0 ) {
 
-		  getAddressSpaceLink()->setAvailable(0, OpcUa_Good);
+		  getAddressSpaceLink()->setBusy(1, OpcUa_Good);
 
 		  LOG(Log::INF) << "Is purity monitor available = " <<  getAddressSpaceLink()->getAvailable();
 
@@ -131,8 +130,9 @@ namespace Device
 
 			  LOG(Log::INF) << "Taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
-			  system("sleep 30");
+			  system("sleep 10");
 
+			  LOG(Log::INF) << "I have finished taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
 			  getAddressSpaceLink()->setTakeData(0, OpcUa_Good);
 		  }
@@ -141,23 +141,24 @@ namespace Device
 
 			  LOG(Log::INF) << "Doing the analysis" ;
 
+			  system("sleep 10");
+
+			  LOG(Log::INF) << "I have done the analysis" ;
+
 			  getAddressSpaceLink()->setDoAnalysis(0, OpcUa_Good);
 
 		  }
 
 
-		  // from the server to the clients
-//	  m_rotationalSpeed = 0.9*m_rotationalSpeed + 0.1*getAddressSpaceLink()->getRotationalSpeedSetPoint();
+		  getAddressSpaceLink()->setBusy(0, OpcUa_Good);
+	  } else {
 
-//	  getAddressSpaceLink()->setRotationalSpeed(m_rotationalSpeed, OpcUa_Good);
+		  // if the server is busy you shouldn't be allowed to do anything
 
-	  // from the clients to the server
-//	  OpcUa_Double rotationalSpeedSetPoint = getAddressSpaceLink()->getRotationalSpeedSetPoint();
-//	  LOG(Log::INF) << "update(), setpoint = " << rotationalSpeedSetPoint;
+		  getAddressSpaceLink()->setTakeData(0, OpcUa_Good);
 
+		  getAddressSpaceLink()->setDoAnalysis(0, OpcUa_Good);
 
-
-		  getAddressSpaceLink()->setAvailable(1, OpcUa_Good);
 	  }
 
   }
