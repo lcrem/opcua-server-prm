@@ -56,7 +56,8 @@
   </d:class>
   <d:class name="PurityMonitor">
   	<d:devicelogic></d:devicelogic>	
-  	  	<d:cachevariable initializeWith="valueAndStatus"
+  	
+  	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Double" name="runningConfiguration"
   		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
   		initialStatus="OpcUa_Good" initialValue="0">
@@ -66,6 +67,32 @@
   			lamp only, 1 is 40.20.60 V/cm, 2 is 60.30.90 V/cm</d:documentation>
   	</d:cachevariable>
   	
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="takeData"
+  		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
+  		initialStatus="OpcUa_Good" initialValue="0">
+  		<d:configRestriction>
+  			<d:restrictionByBounds maxInclusive="1" minInclusive="0"/></d:configRestriction>
+  		<d:documentation>Take data</d:documentation>
+  	</d:cachevariable>
+
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="doAnalysis"
+  		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
+  		initialStatus="OpcUa_Good" initialValue="0">
+  		<d:configRestriction>
+  			<d:restrictionByBounds maxInclusive="1" minInclusive="0"/></d:configRestriction>
+  		<d:documentation>Do Analysis </d:documentation>
+  	</d:cachevariable>
+
+
+  	<d:cachevariable initializeWith="valueAndStatus"
+  		dataType="OpcUa_Double" name="available"
+  		nullPolicy="nullForbidden" addressSpaceWrite="forbidden"
+  		initialStatus="OpcUa_Good" initialValue="0">
+  		<d:documentation>Is the server available to do things? </d:documentation>
+  	</d:cachevariable>
+
   </d:class>
   <d:root>
   	<d:hasobjects instantiateUsing="configuration" class="Controller"></d:hasobjects>
