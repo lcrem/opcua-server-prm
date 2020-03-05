@@ -196,7 +196,7 @@ namespace Device
 UaStatus DPurityMonitor::executeCommand(char *cmd){
 
 	  char outfile[80], infile[80];
-	  sprintf(infile,"/home/lindac/DUNE/takeLifetimeData/%s.sh", cmd);
+	  sprintf(infile,"/home/lindac/DUNE/takeLifetimeData/%s.sh 2>&1", cmd);
 
 	  time_t rawtime;
 	  struct tm * timeinfo;
