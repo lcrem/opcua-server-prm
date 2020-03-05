@@ -130,22 +130,26 @@ namespace Device
 
 			  LOG(Log::INF) << "Taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
+			  UaString output;
 			  switch(getAddressSpaceLink()->getRunningConfiguration()){
 
 			  case 0:
 				  LOG(Log::INF) << "Taking software triggers.";
 //				  system("/home/lindac/DUNE/takeLifetimeData/takeSoftwareTriggers.sh");
-				  UaString output = executeCommand("takeSoftwareTriggers");
+				  output = executeCommand("takeSoftwareTriggers");
 				  LOG(Log::INF) << "OUTPUT !!!! " ;
 				  break;
+
 			  case 1:
 				  LOG(Log::INF) << "Taking lamp only run.";
 				  system("sleep 10");
 				  break;
+
 			  case 2:
 				  LOG(Log::INF) << "Taking run with field configuration 40.20.60 V/cm.";
 				  system("sleep 10");
 				  break;
+
 			  case 3:
 				  LOG(Log::INF) << "Taking run with field configuration 60.30.90 V/cm.";
 				  system("sleep 10");
@@ -198,7 +202,7 @@ UaString DPurityMonitor::executeCommand(char *cmd){
       UaString result = "";
       while(!feof(pipe)) {
           if(fgets(buffer, 128, pipe) != NULL)
-              result += buffer;
+              result = result + buffer;
       }
       pclose(pipe);
       return result;
