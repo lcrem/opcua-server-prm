@@ -29,6 +29,7 @@
 
 #include <DRoot.h>
 #include <DMotor.h>
+#include <DPurityMonitor.h>
 #include <DController.h>
 
 QuasarServer::QuasarServer() : BaseQuasarServer()
