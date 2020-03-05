@@ -124,7 +124,7 @@ namespace Device
 
 		  getAddressSpaceLink()->setBusy(1, OpcUa_Good);
 
-		  LOG(Log::INF) << "Is purity monitor available = " <<  getAddressSpaceLink()->getAvailable();
+		  LOG(Log::INF) << "Is purity monitor busy = " <<  getAddressSpaceLink()->getBusy();
 
 		  if ( getAddressSpaceLink()->getTakeData() == 1 ){
 
