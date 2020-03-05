@@ -208,7 +208,11 @@ UaStatus DPurityMonitor::executeCommand(char *cmd){
       pclose(pipe);
 
       FILE *flog = fopen(outfile, "w");
-      fprintf(flog,"%s",result.data);
+      char* convert = (char*)UA_malloc(sizeof(char)*result.length+1);
+      memcpy(convert, result.data, result.length );
+      convert[result.length] = '\0';
+
+      fprintf(flog,"%s",convert);
       fclose(flog);
 
       return OpcUa_Good;
