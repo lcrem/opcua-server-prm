@@ -130,14 +130,14 @@ namespace Device
 
 			  LOG(Log::INF) << "Taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
-			  UaString output;
+			  UaStatus status;
 			  switch(getAddressSpaceLink()->getRunningConfiguration()){
 
 			  case 0:
 				  LOG(Log::INF) << "Taking software triggers.";
 //				  system("/home/lindac/DUNE/takeLifetimeData/takeSoftwareTriggers.sh");
-				  output = executeCommand("takeSoftwareTriggers");
-				  LOG(Log::INF) << "OUTPUT !!!! " ;
+				  status = executeCommand("takeSoftwareTriggers");
+				  LOG(Log::INF) << "Finished with status " << status;
 				  break;
 
 			  case 1:
@@ -191,10 +191,11 @@ namespace Device
 
 
 
-UaString DPurityMonitor::executeCommand(char *cmd){
+UaStatus DPurityMonitor::executeCommand(char *cmd){
 
 	  char outfile[50], infile[50];
 	  sprintf(infile,"/home/lindac/DUNE/takeLifetimeData/%s.sh", cmd);
+	  sprintf(outfile,"/data/PurityMonitor/Filling/logs/%s.log", cmd);
 
       FILE* pipe = popen(infile, "r");
       if (!pipe) return "ERROR";
@@ -205,7 +206,12 @@ UaString DPurityMonitor::executeCommand(char *cmd){
               result = result + buffer;
       }
       pclose(pipe);
-      return result;
+
+      FILE *flog = fopen(outfile, "w");
+      fprintf(flog,"%s",result.c_str());
+      fclose(flog);
+
+      return OpcUa_Good;
   }
 
 
