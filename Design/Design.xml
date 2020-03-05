@@ -81,8 +81,9 @@
   		dataType="OpcUa_Int16" name="doAnalysis"
   		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
   		initialStatus="OpcUa_Good" initialValue="0">
-  		<d:configRestriction>
-  			<d:restrictionByBounds maxInclusive="1" minInclusive="0"/></d:configRestriction>
+	<d:configRestriction><d:restrictionByEnumeration>
+  				<d:enumerationValue value="0" /><d:enumerationValue
+  					value="1" /></d:restrictionByEnumeration></d:configRestriction>
   		<d:documentation>Set to 1 to do analysis </d:documentation>
   	</d:cachevariable>
 

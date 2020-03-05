@@ -101,12 +101,11 @@ namespace Device
 
   UaStatus DPurityMonitor::writeDoAnalysis (const OpcUa_Int16 & v)
   {
-     if (v < 0)
-	 		return OpcUa_BadOutOfRange;
-     if (v > 1)
-	  	    return OpcUa_BadOutOfRange;
+	  if (v == 0 || v == 1)
+		  return OpcUa_Good;
 
-	 return OpcUa_Good;
+	  return OpcUa_BadOutOfRange;
+
   }
 
 
