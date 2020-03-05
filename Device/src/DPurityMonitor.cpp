@@ -200,7 +200,7 @@ UaStatus DPurityMonitor::executeCommand(char *cmd){
       FILE* pipe = popen(infile, "r");
       if (!pipe) return OpcUa_Bad;
       char buffer[128];
-      UaString result = "";
+      std::string result = "";
       while(!feof(pipe)) {
           if(fgets(buffer, 128, pipe) != NULL)
               result = result + buffer;
@@ -208,11 +208,8 @@ UaStatus DPurityMonitor::executeCommand(char *cmd){
       pclose(pipe);
 
       FILE *flog = fopen(outfile, "w");
-      char* convert = (char*)UA_malloc(sizeof(char)*result.length+1);
-      memcpy(convert, result.data, result.length );
-      convert[result.length] = '\0';
 
-      fprintf(flog,"%s",convert);
+      fprintf(flog,"%s",string.c_str());
       fclose(flog);
 
       return OpcUa_Good;
