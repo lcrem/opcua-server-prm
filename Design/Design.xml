@@ -58,7 +58,7 @@
   	<d:devicelogic></d:devicelogic>	
   	
   	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="OpcUa_Double" name="runningConfiguration"
+  		dataType="OpcUa_Int16" name="runningConfiguration"
   		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
   		initialStatus="OpcUa_Good" initialValue="0">
   		<d:configRestriction>
@@ -68,7 +68,7 @@
   	</d:cachevariable>
   	
   	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="OpcUa_Double" name="takeData"
+  		dataType="OpcUa_Int16" name="takeData"
   		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
   		initialStatus="OpcUa_Good" initialValue="0">
   		<d:configRestriction>
@@ -77,7 +77,7 @@
   	</d:cachevariable>
 
   	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="OpcUa_Double" name="doAnalysis"
+  		dataType="OpcUa_Int16" name="doAnalysis"
   		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
   		initialStatus="OpcUa_Good" initialValue="0">
   		<d:configRestriction>
@@ -87,7 +87,7 @@
 
 
   	<d:cachevariable initializeWith="valueAndStatus"
-  		dataType="OpcUa_Double" name="available"
+  		dataType="OpcUa_Int16" name="available"
   		nullPolicy="nullForbidden" addressSpaceWrite="forbidden"
   		initialStatus="OpcUa_Good" initialValue="1">
   		<d:documentation>Is the server available to do things? </d:documentation>
