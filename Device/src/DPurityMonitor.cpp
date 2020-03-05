@@ -115,7 +115,25 @@ namespace Device
   // 3     You can do whatever you want, but please be decent.               3
   // 3333333333333333333333333333333333333333333333333333333333333333333333333
 
+  void DPurityMonitor::update()
+  {
+
+	  if (available() == 1 ) {
+
+		  LOG(Log::INF) << "Is purity monitor available = " << available() ;
 
 
+		  // from the server to the clients
+//	  m_rotationalSpeed = 0.9*m_rotationalSpeed + 0.1*getAddressSpaceLink()->getRotationalSpeedSetPoint();
+
+//	  getAddressSpaceLink()->setRotationalSpeed(m_rotationalSpeed, OpcUa_Good);
+
+	  // from the clients to the server
+//	  OpcUa_Double rotationalSpeedSetPoint = getAddressSpaceLink()->getRotationalSpeedSetPoint();
+//	  LOG(Log::INF) << "update(), setpoint = " << rotationalSpeedSetPoint;
+
+	  }
+
+  }
 
 }

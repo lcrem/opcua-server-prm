@@ -49,10 +49,12 @@ void QuasarServer::mainLoop()
 
     while(ShutDownFlag() == 0)
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-        for(Device::DController *controller : Device::DRoot::getInstance()->controllers())
-        	controller->update();
+//        for(Device::DController *controller : Device::DRoot::getInstance()->controllers())
+//        	controller->update();
+        for(Device::DPurityMonitor *purityMonitor : Device::DRoot::getInstance()->puritymonitors())
+        	purityMonitor->update();
 
     }
     printServerMsg(" Shutting down server");
