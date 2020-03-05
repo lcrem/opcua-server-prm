@@ -71,8 +71,9 @@
   		dataType="OpcUa_Int16" name="takeData"
   		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
   		initialStatus="OpcUa_Good" initialValue="0">
-  		<d:configRestriction>
-  			<d:restrictionByBounds maxInclusive="1" minInclusive="0"/></d:configRestriction>
+	<d:configRestriction><d:restrictionByEnumeration>
+  				<d:enumerationValue value="0" /><d:enumerationValue
+  					value="1" /></d:restrictionByEnumeration></d:configRestriction>
   		<d:documentation>Set to 1 to take data</d:documentation>
   	</d:cachevariable>
 

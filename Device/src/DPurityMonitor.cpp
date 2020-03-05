@@ -91,14 +91,22 @@ namespace Device
 
   UaStatus DPurityMonitor::writeTakeData (const OpcUa_Int16 & v)
   {
-    return OpcUa_BadNotImplemented;
+   if (v == 0 || v == 1)
+		return OpcUa_Good;
+
+   return OpcUa_BadOutOfRange;
   }
 
   /* Note: never directly call this function. */
 
   UaStatus DPurityMonitor::writeDoAnalysis (const OpcUa_Int16 & v)
   {
-    return OpcUa_BadNotImplemented;
+     if (v < 0)
+	 		return OpcUa_BadOutOfRange;
+     if (v > 1)
+	  	    return OpcUa_BadOutOfRange;
+
+	 return OpcUa_Good;
   }
 
 
