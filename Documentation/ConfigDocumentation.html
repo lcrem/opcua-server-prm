@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns:xs="http://www.w3.org/2001/XMLSchema"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:d="http://cern.ch/quasar/Design"
+      xmlns:fnc="http://cern.ch/quasar/MyFunctions">
+   <h1>Configuration documentation for </h1>
+    
+    
+    Jump to:
+    <a href="#class_Motor">Motor</a> 
+   <a href="#class_Controller">Controller</a> 
+   <a href="#class_TemperatureProbe">TemperatureProbe</a> 
+   <a href="#class_AirFlowProbe">AirFlowProbe</a> 
+   <a id="class_AirFlowProbe">
+      <h2>AirFlowProbe</h2>
+   </a>
+        This class(XML element) has no configuration attributes.
+        
+    
+    Possible children:
+    <a href="#class_CalculatedVariable">CalculatedVariable</a>
+   <a id="class_Controller">
+      <h2>Controller</h2>
+   </a>
+        Configuration attributes:
+        <ul>
+      <li>
+         <b>address</b> (UaString)
+                mandatory<div style="background-color: #ffefef">
+            <font color="red">Value restrictions</font>
+            <br/>Pattern: <code>usb[0-9]+</code>
+         </div>
+         <br/>
+      </li>
+   </ul>
+    
+    Possible children:
+    <a href="#class_CalculatedVariable">CalculatedVariable</a>
+   <a href="#class_Motor">Motor</a>
+   <a id="class_Motor">
+      <h2>Motor</h2>
+   </a>
+   <div style="background-color:#eeeeff">
+      <font color="blue">DOC</font> 
+      <d:documentation>This class covers motors of type A and B.</d:documentation>
+   </div>
+   <br/>
+        Configuration attributes:
+        <ul>
+      <li>
+         <b>identifier</b> (OpcUa_UInt32)
+                mandatory<div style="background-color:#eeeeff">
+            <font color="blue">DOC</font> 
+            <d:documentation>This should match the slot at which the motor is inserted</d:documentation>
+         </div>
+         <div style="background-color: #ffefef">
+            <font color="red">Value restrictions</font>
+            <br/>
+                        Bounds:
+                        <code>identifier&gt;=0</code>
+            <code> AND identifier&lt;=3</code>
+         </div>
+         <br/>
+      </li>
+      <li>
+         <b>refreshRate</b> (OpcUa_Float)
+                mandatory<div style="background-color: #ffefef">
+            <font color="red">Value restrictions</font>
+            <br/>
+                        Enumeration: 
+                        <code>1000</code>|<code>2000</code>
+         </div>
+         <br/>
+      </li>
+   </ul>
+    
+    Possible children:
+    <a href="#class_CalculatedVariable">CalculatedVariable</a>
+   <a href="#class_TemperatureProbe">TemperatureProbe</a>
+   <a href="#class_AirFlowProbe">AirFlowProbe</a>
+   <a id="class_TemperatureProbe">
+      <h2>TemperatureProbe</h2>
+   </a>
+        This class(XML element) has no configuration attributes.
+        
+    
+    Possible children:
+    <a href="#class_CalculatedVariable">CalculatedVariable</a>
+   <a id="class_CalculatedVariable">
+      <h2>CalculatedVariable</h2>
+   </a>
+    A CalculatedVariable is a "synthetic" variable which is based on other "real" variables of the address-space.
+    You can declare a CalculatedVariable under any object in the configuration file.
+    The required attributes are:
+    <ul>
+      <li>name - will be the last part of the address</li>
+      <li>value - analytical formula used to calculate value of the variable. 
+        E.g. to calculate square of another variable with address x.y you should put <code>x.y^2</code>
+      </li>
+   </ul>
+    Detailed documentation of all features of CalculatedVariables is available in quasar Documentation.
+    
+    </html>
