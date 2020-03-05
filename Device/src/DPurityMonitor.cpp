@@ -172,9 +172,10 @@ namespace Device
 			  getAddressSpaceLink()->setBusy(1, OpcUa_Good);
 
 			  LOG(Log::INF) << "Doing the analysis" ;
-			  status = executeCommand("doEverythingForMe");
+			  status = executeCommand("doEverythingForMeServer");
 			  LOG(Log::INF) << "Finished with status " << status;
-
+			  system("/home/lindac/DUNE/takeLifetimeData/rsyncThingsServer.sh &");
+			  LOG(Log::INF) << "And done rsyncing. ";
 			  getAddressSpaceLink()->setDoAnalysis(0, OpcUa_Good);
 			  getAddressSpaceLink()->setBusy(0, OpcUa_Good);
 
