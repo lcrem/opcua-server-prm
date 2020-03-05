@@ -27,6 +27,8 @@
 #include <DPurityMonitor.h>
 #include <ASPurityMonitor.h>
 
+#include <stdio.h>
+#include <stdlib.h>
 
 
 
@@ -121,7 +123,27 @@ namespace Device
 
 	  if ( tmpAvailable == 1 ) {
 
-		  LOG(Log::INF) << "Is purity monitor available = " << tmpAvailable ;
+		  getAddressSpaceLink()->setAvailable(0, OpcUa_Good);
+
+		  LOG(Log::INF) << "Is purity monitor available = " <<  getAddressSpaceLink()->getAvailable();
+
+		  if ( getAddressSpaceLink()->getTakeData() == 1 ){
+
+			  LOG(Log::INF) << "Taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
+
+			  system("sleep 30");
+
+
+			  getAddressSpaceLink()->setTakeData(0, OpcUa_Good);
+		  }
+
+		  else if ( getAddressSpaceLink()->getDoAnalysis() == 1 ){
+
+			  LOG(Log::INF) << "Doing the analysis" ;
+
+			  getAddressSpaceLink()->setDoAnalysis(0, OpcUa_Good);
+
+		  }
 
 
 		  // from the server to the clients
@@ -133,6 +155,9 @@ namespace Device
 //	  OpcUa_Double rotationalSpeedSetPoint = getAddressSpaceLink()->getRotationalSpeedSetPoint();
 //	  LOG(Log::INF) << "update(), setpoint = " << rotationalSpeedSetPoint;
 
+
+
+		  getAddressSpaceLink()->setAvailable(1, OpcUa_Good);
 	  }
 
   }
