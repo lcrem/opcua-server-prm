@@ -208,7 +208,7 @@ UaStatus DPurityMonitor::executeCommand(char *cmd){
       pclose(pipe);
 
       FILE *flog = fopen(outfile, "w");
-      fprintf(flog,"%s",result);
+      fprintf(flog,"%s",result.data);
       fclose(flog);
 
       return OpcUa_Good;
