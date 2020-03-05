@@ -29,7 +29,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <ctime>
 
 
 
@@ -195,7 +195,17 @@ UaStatus DPurityMonitor::executeCommand(char *cmd){
 
 	  char outfile[50], infile[50];
 	  sprintf(infile,"/home/lindac/DUNE/takeLifetimeData/%s.sh", cmd);
-	  sprintf(outfile,"/data/PurityMonitor/Filling/logs/%s.log", cmd);
+
+	  time_t rawtime;
+	  struct tm * timeinfo;
+	  char timeaschar[80];
+
+	  time (&rawtime);
+	  timeinfo = localtime(&rawtime);
+
+	  strftime(timeaschar,sizeof(timeaschar),"%Y.%m.%d_%H.%M",timeinfo);
+
+	  sprintf(outfile,"/data/PurityMonitor/Filling/logs/%s_%s.log", cmd, timeaschar);
 
       FILE* pipe = popen(infile, "r");
       if (!pipe) return OpcUa_Bad;
