@@ -78,7 +78,13 @@ namespace Device
 
   UaStatus DPurityMonitor::writeRunningConfiguration (const OpcUa_Int16 & v)
   {
-    return OpcUa_BadNotImplemented;
+
+	if (v < 0)
+		return OpcUa_BadOutOfRange;
+	if (v > 2)
+		return OpcUa_BadOutOfRange;
+
+    return OpcUa_Good;
   }
 
   /* Note: never directly call this function. */
