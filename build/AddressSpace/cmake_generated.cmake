@@ -23,6 +23,12 @@
     DEPENDS ${DESIGN_FILE} ${PROJECT_SOURCE_DIR}/AddressSpace/designToClassHeader.xslt Configuration.hxx_GENERATED validateDesign
     ) 
 	
+    add_custom_command(OUTPUT ${PROJECT_BINARY_DIR}/AddressSpace/include/ASPurityMonitor.h 
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+    COMMAND python quasar.py generate asclass PurityMonitor --project_binary_dir ${PROJECT_BINARY_DIR}
+    DEPENDS ${DESIGN_FILE} ${PROJECT_SOURCE_DIR}/AddressSpace/designToClassHeader.xslt Configuration.hxx_GENERATED validateDesign
+    ) 
+	
 	
     add_custom_command(OUTPUT ${PROJECT_BINARY_DIR}/AddressSpace/src/AddressSpaceClasses.cpp 
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
@@ -43,6 +49,8 @@
 	${PROJECT_BINARY_DIR}/AddressSpace/include/ASTemperatureProbe.h
 	
 	${PROJECT_BINARY_DIR}/AddressSpace/include/ASAirFlowProbe.h
+	
+	${PROJECT_BINARY_DIR}/AddressSpace/include/ASPurityMonitor.h
 	
 	)
 	

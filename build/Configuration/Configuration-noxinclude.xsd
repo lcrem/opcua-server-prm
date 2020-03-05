@@ -89,8 +89,30 @@
       </xs:sequence>
       <xs:attribute name="name" type="tns:ObjectName" use="required"/>
    </xs:complexType>
+  <xs:complexType name="PurityMonitor">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>
+         </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="tns:ObjectName" use="required"/>
+      <xs:attribute name="identifier" use="required">
+         <xs:annotation>
+            <xs:documentation>Choose running configuration for purity monitors
+  			lamp only, 1 is 40.20.60 V/cm, 2 is 60.30.90 V/cm</xs:documentation>
+         </xs:annotation>
+         <xs:simpleType>
+            <xs:restriction base="xs:unsignedInt">
+               <xs:minInclusive value="0"/>
+               <xs:maxInclusive value="2"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:complexType>
   
   	
+  	
+  
    <xs:complexType name="Configuration">
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="1">
@@ -102,6 +124,7 @@
          </xs:choice>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="Controller" type="tns:Controller"/>
+            <xs:element name="PurityMonitor" type="tns:PurityMonitor"/>
          </xs:choice>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="CalculatedVariable" type="tns:CalculatedVariable"/>

@@ -263,6 +263,33 @@ src/DMotor.cpp.s:
 	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DMotor.cpp.s
 .PHONY : src/DMotor.cpp.s
 
+src/DPurityMonitor.o: src/DPurityMonitor.cpp.o
+
+.PHONY : src/DPurityMonitor.o
+
+# target to build an object file
+src/DPurityMonitor.cpp.o:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DPurityMonitor.cpp.o
+.PHONY : src/DPurityMonitor.cpp.o
+
+src/DPurityMonitor.i: src/DPurityMonitor.cpp.i
+
+.PHONY : src/DPurityMonitor.i
+
+# target to preprocess a source file
+src/DPurityMonitor.cpp.i:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DPurityMonitor.cpp.i
+.PHONY : src/DPurityMonitor.cpp.i
+
+src/DPurityMonitor.s: src/DPurityMonitor.cpp.s
+
+.PHONY : src/DPurityMonitor.s
+
+# target to generate assembly for a file
+src/DPurityMonitor.cpp.s:
+	cd /home/lindac/DUNE/opcua-prm-server/build && $(MAKE) -f Device/CMakeFiles/Device.dir/build.make Device/CMakeFiles/Device.dir/src/DPurityMonitor.cpp.s
+.PHONY : src/DPurityMonitor.cpp.s
+
 src/DRoot.o: src/DRoot.cpp.o
 
 .PHONY : src/DRoot.o
@@ -340,6 +367,9 @@ help:
 	@echo "... src/DMotor.o"
 	@echo "... src/DMotor.i"
 	@echo "... src/DMotor.s"
+	@echo "... src/DPurityMonitor.o"
+	@echo "... src/DPurityMonitor.i"
+	@echo "... src/DPurityMonitor.s"
 	@echo "... src/DRoot.o"
 	@echo "... src/DRoot.i"
 	@echo "... src/DRoot.s"

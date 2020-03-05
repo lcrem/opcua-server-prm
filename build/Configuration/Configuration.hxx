@@ -270,10 +270,12 @@ namespace Configuration
   class Controller;
   class TemperatureProbe;
   class AirFlowProbe;
+  class PurityMonitor;
   class Configuration;
   class refreshRate;
   class identifier;
   class address;
+  class identifier1;
 }
 
 
@@ -1514,6 +1516,96 @@ namespace Configuration
     ::xsd::cxx::tree::one< name_type > name_;
   };
 
+  class PurityMonitor: public ::xml_schema::type
+  {
+    public:
+    // CalculatedVariable
+    //
+    typedef ::Configuration::CalculatedVariable CalculatedVariable_type;
+    typedef ::xsd::cxx::tree::sequence< CalculatedVariable_type > CalculatedVariable_sequence;
+    typedef CalculatedVariable_sequence::iterator CalculatedVariable_iterator;
+    typedef CalculatedVariable_sequence::const_iterator CalculatedVariable_const_iterator;
+    typedef ::xsd::cxx::tree::traits< CalculatedVariable_type, char > CalculatedVariable_traits;
+
+    const CalculatedVariable_sequence&
+    CalculatedVariable () const;
+
+    CalculatedVariable_sequence&
+    CalculatedVariable ();
+
+    void
+    CalculatedVariable (const CalculatedVariable_sequence& s);
+
+    // name
+    //
+    typedef ::Configuration::ObjectName name_type;
+    typedef ::xsd::cxx::tree::traits< name_type, char > name_traits;
+
+    const name_type&
+    name () const;
+
+    name_type&
+    name ();
+
+    void
+    name (const name_type& x);
+
+    void
+    name (::std::unique_ptr< name_type > p);
+
+    // identifier
+    //
+    typedef ::Configuration::identifier1 identifier_type;
+    typedef ::xsd::cxx::tree::traits< identifier_type, char > identifier_traits;
+
+    const identifier_type&
+    identifier () const;
+
+    identifier_type&
+    identifier ();
+
+    void
+    identifier (const identifier_type& x);
+
+    void
+    identifier (::std::unique_ptr< identifier_type > p);
+
+    // Constructors.
+    //
+    PurityMonitor (const name_type&,
+                   const identifier_type&);
+
+    PurityMonitor (const ::xercesc::DOMElement& e,
+                   ::xml_schema::flags f = 0,
+                   ::xml_schema::container* c = 0);
+
+    PurityMonitor (const PurityMonitor& x,
+                   ::xml_schema::flags f = 0,
+                   ::xml_schema::container* c = 0);
+
+    virtual PurityMonitor*
+    _clone (::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0) const;
+
+    PurityMonitor&
+    operator= (const PurityMonitor& x);
+
+    virtual 
+    ~PurityMonitor ();
+
+    // Implementation.
+    //
+    protected:
+    void
+    parse (::xsd::cxx::xml::dom::parser< char >&,
+           ::xml_schema::flags);
+
+    protected:
+    CalculatedVariable_sequence CalculatedVariable_;
+    ::xsd::cxx::tree::one< name_type > name_;
+    ::xsd::cxx::tree::one< identifier_type > identifier_;
+  };
+
   class Configuration: public ::xml_schema::type
   {
     public:
@@ -1572,6 +1664,23 @@ namespace Configuration
     void
     Controller (const Controller_sequence& s);
 
+    // PurityMonitor
+    //
+    typedef ::Configuration::PurityMonitor PurityMonitor_type;
+    typedef ::xsd::cxx::tree::sequence< PurityMonitor_type > PurityMonitor_sequence;
+    typedef PurityMonitor_sequence::iterator PurityMonitor_iterator;
+    typedef PurityMonitor_sequence::const_iterator PurityMonitor_const_iterator;
+    typedef ::xsd::cxx::tree::traits< PurityMonitor_type, char > PurityMonitor_traits;
+
+    const PurityMonitor_sequence&
+    PurityMonitor () const;
+
+    PurityMonitor_sequence&
+    PurityMonitor ();
+
+    void
+    PurityMonitor (const PurityMonitor_sequence& s);
+
     // CalculatedVariable
     //
     typedef ::Configuration::CalculatedVariable CalculatedVariable_type;
@@ -1622,6 +1731,7 @@ namespace Configuration
     StandardMetaData_optional StandardMetaData_;
     CalculatedVariableGenericFormula_sequence CalculatedVariableGenericFormula_;
     Controller_sequence Controller_;
+    PurityMonitor_sequence PurityMonitor_;
     CalculatedVariable_sequence CalculatedVariable_;
   };
 
@@ -1720,6 +1830,38 @@ namespace Configuration
 
     virtual 
     ~address ();
+  };
+
+  class identifier1: public ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >
+  {
+    public:
+    // Constructors.
+    //
+    identifier1 (const ::xml_schema::unsigned_int&);
+
+    identifier1 (const ::xercesc::DOMElement& e,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+    identifier1 (const ::xercesc::DOMAttr& a,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+    identifier1 (const ::std::string& s,
+                 const ::xercesc::DOMElement* e,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+    identifier1 (const identifier1& x,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+    virtual identifier1*
+    _clone (::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0) const;
+
+    virtual 
+    ~identifier1 ();
   };
 }
 
@@ -1912,6 +2054,9 @@ namespace Configuration
   operator<< (::xercesc::DOMElement&, const AirFlowProbe&);
 
   void
+  operator<< (::xercesc::DOMElement&, const PurityMonitor&);
+
+  void
   operator<< (::xercesc::DOMElement&, const Configuration&);
 
   // Serialize to std::ostream.
@@ -2011,6 +2156,16 @@ namespace Configuration
   void
   operator<< (::xml_schema::list_stream&,
               const address&);
+
+  void
+  operator<< (::xercesc::DOMElement&, const identifier1&);
+
+  void
+  operator<< (::xercesc::DOMAttr&, const identifier1&);
+
+  void
+  operator<< (::xml_schema::list_stream&,
+              const identifier1&);
 }
 
 #include <xsd/cxx/post.hxx>

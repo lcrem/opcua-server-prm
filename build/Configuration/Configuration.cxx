@@ -939,6 +939,76 @@ namespace Configuration
   }
 
 
+  // PurityMonitor
+  // 
+
+  const PurityMonitor::CalculatedVariable_sequence& PurityMonitor::
+  CalculatedVariable () const
+  {
+    return this->CalculatedVariable_;
+  }
+
+  PurityMonitor::CalculatedVariable_sequence& PurityMonitor::
+  CalculatedVariable ()
+  {
+    return this->CalculatedVariable_;
+  }
+
+  void PurityMonitor::
+  CalculatedVariable (const CalculatedVariable_sequence& s)
+  {
+    this->CalculatedVariable_ = s;
+  }
+
+  const PurityMonitor::name_type& PurityMonitor::
+  name () const
+  {
+    return this->name_.get ();
+  }
+
+  PurityMonitor::name_type& PurityMonitor::
+  name ()
+  {
+    return this->name_.get ();
+  }
+
+  void PurityMonitor::
+  name (const name_type& x)
+  {
+    this->name_.set (x);
+  }
+
+  void PurityMonitor::
+  name (::std::unique_ptr< name_type > x)
+  {
+    this->name_.set (std::move (x));
+  }
+
+  const PurityMonitor::identifier_type& PurityMonitor::
+  identifier () const
+  {
+    return this->identifier_.get ();
+  }
+
+  PurityMonitor::identifier_type& PurityMonitor::
+  identifier ()
+  {
+    return this->identifier_.get ();
+  }
+
+  void PurityMonitor::
+  identifier (const identifier_type& x)
+  {
+    this->identifier_.set (x);
+  }
+
+  void PurityMonitor::
+  identifier (::std::unique_ptr< identifier_type > x)
+  {
+    this->identifier_.set (std::move (x));
+  }
+
+
   // Configuration
   // 
 
@@ -1008,6 +1078,24 @@ namespace Configuration
     this->Controller_ = s;
   }
 
+  const Configuration::PurityMonitor_sequence& Configuration::
+  PurityMonitor () const
+  {
+    return this->PurityMonitor_;
+  }
+
+  Configuration::PurityMonitor_sequence& Configuration::
+  PurityMonitor ()
+  {
+    return this->PurityMonitor_;
+  }
+
+  void Configuration::
+  PurityMonitor (const PurityMonitor_sequence& s)
+  {
+    this->PurityMonitor_ = s;
+  }
+
   const Configuration::CalculatedVariable_sequence& Configuration::
   CalculatedVariable () const
   {
@@ -1049,6 +1137,10 @@ namespace Configuration
 
 
   // address
+  // 
+
+
+  // identifier1
   // 
 }
 
@@ -2694,6 +2786,130 @@ namespace Configuration
   {
   }
 
+  // PurityMonitor
+  //
+
+  PurityMonitor::
+  PurityMonitor (const name_type& name,
+                 const identifier_type& identifier)
+  : ::xml_schema::type (),
+    CalculatedVariable_ (this),
+    name_ (name, this),
+    identifier_ (identifier, this)
+  {
+  }
+
+  PurityMonitor::
+  PurityMonitor (const PurityMonitor& x,
+                 ::xml_schema::flags f,
+                 ::xml_schema::container* c)
+  : ::xml_schema::type (x, f, c),
+    CalculatedVariable_ (x.CalculatedVariable_, f, this),
+    name_ (x.name_, f, this),
+    identifier_ (x.identifier_, f, this)
+  {
+  }
+
+  PurityMonitor::
+  PurityMonitor (const ::xercesc::DOMElement& e,
+                 ::xml_schema::flags f,
+                 ::xml_schema::container* c)
+  : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+    CalculatedVariable_ (this),
+    name_ (this),
+    identifier_ (this)
+  {
+    if ((f & ::xml_schema::flags::base) == 0)
+    {
+      ::xsd::cxx::xml::dom::parser< char > p (e, true, false, true);
+      this->parse (p, f);
+    }
+  }
+
+  void PurityMonitor::
+  parse (::xsd::cxx::xml::dom::parser< char >& p,
+         ::xml_schema::flags f)
+  {
+    for (; p.more_content (); p.next_content (false))
+    {
+      const ::xercesc::DOMElement& i (p.cur_element ());
+      const ::xsd::cxx::xml::qualified_name< char > n (
+        ::xsd::cxx::xml::dom::name< char > (i));
+
+      // CalculatedVariable
+      //
+      if (n.name () == "CalculatedVariable" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      {
+        ::std::unique_ptr< CalculatedVariable_type > r (
+          CalculatedVariable_traits::create (i, f, this));
+
+        this->CalculatedVariable_.push_back (::std::move (r));
+        continue;
+      }
+
+      break;
+    }
+
+    while (p.more_attributes ())
+    {
+      const ::xercesc::DOMAttr& i (p.next_attribute ());
+      const ::xsd::cxx::xml::qualified_name< char > n (
+        ::xsd::cxx::xml::dom::name< char > (i));
+
+      if (n.name () == "name" && n.namespace_ ().empty ())
+      {
+        this->name_.set (name_traits::create (i, f, this));
+        continue;
+      }
+
+      if (n.name () == "identifier" && n.namespace_ ().empty ())
+      {
+        this->identifier_.set (identifier_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    if (!name_.present ())
+    {
+      throw ::xsd::cxx::tree::expected_attribute< char > (
+        "name",
+        "");
+    }
+
+    if (!identifier_.present ())
+    {
+      throw ::xsd::cxx::tree::expected_attribute< char > (
+        "identifier",
+        "");
+    }
+  }
+
+  PurityMonitor* PurityMonitor::
+  _clone (::xml_schema::flags f,
+          ::xml_schema::container* c) const
+  {
+    return new class PurityMonitor (*this, f, c);
+  }
+
+  PurityMonitor& PurityMonitor::
+  operator= (const PurityMonitor& x)
+  {
+    if (this != &x)
+    {
+      static_cast< ::xml_schema::type& > (*this) = x;
+      this->CalculatedVariable_ = x.CalculatedVariable_;
+      this->name_ = x.name_;
+      this->identifier_ = x.identifier_;
+    }
+
+    return *this;
+  }
+
+  PurityMonitor::
+  ~PurityMonitor ()
+  {
+  }
+
   // Configuration
   //
 
@@ -2703,6 +2919,7 @@ namespace Configuration
     StandardMetaData_ (this),
     CalculatedVariableGenericFormula_ (this),
     Controller_ (this),
+    PurityMonitor_ (this),
     CalculatedVariable_ (this)
   {
   }
@@ -2715,6 +2932,7 @@ namespace Configuration
     StandardMetaData_ (x.StandardMetaData_, f, this),
     CalculatedVariableGenericFormula_ (x.CalculatedVariableGenericFormula_, f, this),
     Controller_ (x.Controller_, f, this),
+    PurityMonitor_ (x.PurityMonitor_, f, this),
     CalculatedVariable_ (x.CalculatedVariable_, f, this)
   {
   }
@@ -2727,6 +2945,7 @@ namespace Configuration
     StandardMetaData_ (this),
     CalculatedVariableGenericFormula_ (this),
     Controller_ (this),
+    PurityMonitor_ (this),
     CalculatedVariable_ (this)
   {
     if ((f & ::xml_schema::flags::base) == 0)
@@ -2782,6 +3001,17 @@ namespace Configuration
         continue;
       }
 
+      // PurityMonitor
+      //
+      if (n.name () == "PurityMonitor" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
+      {
+        ::std::unique_ptr< PurityMonitor_type > r (
+          PurityMonitor_traits::create (i, f, this));
+
+        this->PurityMonitor_.push_back (::std::move (r));
+        continue;
+      }
+
       // CalculatedVariable
       //
       if (n.name () == "CalculatedVariable" && n.namespace_ () == "http://cern.ch/quasar/Configuration")
@@ -2813,6 +3043,7 @@ namespace Configuration
       this->StandardMetaData_ = x.StandardMetaData_;
       this->CalculatedVariableGenericFormula_ = x.CalculatedVariableGenericFormula_;
       this->Controller_ = x.Controller_;
+      this->PurityMonitor_ = x.PurityMonitor_;
       this->CalculatedVariable_ = x.CalculatedVariable_;
     }
 
@@ -2982,6 +3213,60 @@ namespace Configuration
 
   address::
   ~address ()
+  {
+  }
+
+  // identifier1
+  //
+
+  identifier1::
+  identifier1 (const ::xml_schema::unsigned_int& _xsd_unsigned_int_base)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (_xsd_unsigned_int_base)
+  {
+  }
+
+  identifier1::
+  identifier1 (const identifier1& x,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (x, f, c)
+  {
+  }
+
+  identifier1::
+  identifier1 (const ::xercesc::DOMElement& e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (e, f, c)
+  {
+  }
+
+  identifier1::
+  identifier1 (const ::xercesc::DOMAttr& a,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (a, f, c)
+  {
+  }
+
+  identifier1::
+  identifier1 (const ::std::string& s,
+               const ::xercesc::DOMElement* e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (s, e, f, c)
+  {
+  }
+
+  identifier1* identifier1::
+  _clone (::xml_schema::flags f,
+          ::xml_schema::container* c) const
+  {
+    return new class identifier1 (*this, f, c);
+  }
+
+  identifier1::
+  ~identifier1 ()
   {
   }
 }
@@ -3830,6 +4115,49 @@ namespace Configuration
   }
 
   void
+  operator<< (::xercesc::DOMElement& e, const PurityMonitor& i)
+  {
+    e << static_cast< const ::xml_schema::type& > (i);
+
+    // CalculatedVariable
+    //
+    for (PurityMonitor::CalculatedVariable_const_iterator
+         b (i.CalculatedVariable ().begin ()), n (i.CalculatedVariable ().end ());
+         b != n; ++b)
+    {
+      ::xercesc::DOMElement& s (
+        ::xsd::cxx::xml::dom::create_element (
+          "CalculatedVariable",
+          "http://cern.ch/quasar/Configuration",
+          e));
+
+      s << *b;
+    }
+
+    // name
+    //
+    {
+      ::xercesc::DOMAttr& a (
+        ::xsd::cxx::xml::dom::create_attribute (
+          "name",
+          e));
+
+      a << i.name ();
+    }
+
+    // identifier
+    //
+    {
+      ::xercesc::DOMAttr& a (
+        ::xsd::cxx::xml::dom::create_attribute (
+          "identifier",
+          e));
+
+      a << i.identifier ();
+    }
+  }
+
+  void
   operator<< (::xercesc::DOMElement& e, const Configuration& i)
   {
     e << static_cast< const ::xml_schema::type& > (i);
@@ -3871,6 +4199,21 @@ namespace Configuration
       ::xercesc::DOMElement& s (
         ::xsd::cxx::xml::dom::create_element (
           "Controller",
+          "http://cern.ch/quasar/Configuration",
+          e));
+
+      s << *b;
+    }
+
+    // PurityMonitor
+    //
+    for (Configuration::PurityMonitor_const_iterator
+         b (i.PurityMonitor ().begin ()), n (i.PurityMonitor ().end ());
+         b != n; ++b)
+    {
+      ::xercesc::DOMElement& s (
+        ::xsd::cxx::xml::dom::create_element (
+          "PurityMonitor",
           "http://cern.ch/quasar/Configuration",
           e));
 
@@ -4096,6 +4439,25 @@ namespace Configuration
               const address& i)
   {
     l << static_cast< const ::xml_schema::string& > (i);
+  }
+
+  void
+  operator<< (::xercesc::DOMElement& e, const identifier1& i)
+  {
+    e << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
+  }
+
+  void
+  operator<< (::xercesc::DOMAttr& a, const identifier1& i)
+  {
+    a << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
+  }
+
+  void
+  operator<< (::xml_schema::list_stream& l,
+              const identifier1& i)
+  {
+    l << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
   }
 }
 

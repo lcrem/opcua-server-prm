@@ -44,6 +44,15 @@
 	
 	
 	
+	add_custom_command(OUTPUT ${PROJECT_BINARY_DIR}/Device/generated/Base_DPurityMonitor.h 
+	WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+	COMMAND python quasar.py generate base_h PurityMonitor --project_binary_dir ${PROJECT_BINARY_DIR}
+	DEPENDS ${DESIGN_FILE} ${PROJECT_SOURCE_DIR}/quasar.py ${PROJECT_SOURCE_DIR}/Device/designToDeviceBaseHeader.xslt Configuration.hxx_GENERATED validateDesign 
+	)	
+	
+	
+	
+	
 	set(DEVICEBASE_GENERATED_FILES
         include/DRoot.h
         src/DRoot.cpp
@@ -57,6 +66,8 @@
 	
 	generated/Base_DAirFlowProbe.h
 	
+	generated/Base_DPurityMonitor.h
+	
 	)
 	
 	set(DEVICE_CLASSES
@@ -68,6 +79,8 @@
 	src/DTemperatureProbe.cpp
 	
 	src/DAirFlowProbe.cpp
+	
+	src/DPurityMonitor.cpp
 	
 	)
 
