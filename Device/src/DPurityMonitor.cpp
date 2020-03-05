@@ -122,13 +122,13 @@ namespace Device
 
 	  if ( getAddressSpaceLink()->getBusy()== 0 ) {
 
-		  getAddressSpaceLink()->setBusy(1, OpcUa_Good);
-
 		  LOG(Log::INF) << "Is purity monitor busy = " <<  getAddressSpaceLink()->getBusy();
 
 		  UaStatus status;
 
 		  if ( getAddressSpaceLink()->getTakeData() == 1 ){
+
+			  getAddressSpaceLink()->setBusy(1, OpcUa_Good);
 
 			  LOG(Log::INF) << "Taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
@@ -164,20 +164,22 @@ namespace Device
 			  LOG(Log::INF) << "I have finished taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
 			  getAddressSpaceLink()->setTakeData(0, OpcUa_Good);
+			  getAddressSpaceLink()->setBusy(0, OpcUa_Good);
 		  }
 
 		  else if ( getAddressSpaceLink()->getDoAnalysis() == 1 ){
 
-			  LOG(Log::INF) << "Doing the analysis" ;
+			  getAddressSpaceLink()->setBusy(1, OpcUa_Good);
 
+			  LOG(Log::INF) << "Doing the analysis" ;
 			  status = executeCommand("doEverythingForMe");
 			  LOG(Log::INF) << "Finished with status " << status;
 
 			  getAddressSpaceLink()->setDoAnalysis(0, OpcUa_Good);
+			  getAddressSpaceLink()->setBusy(0, OpcUa_Good);
 
 		  }
 
-		  getAddressSpaceLink()->setBusy(0, OpcUa_Good);
 
 	  } else {
 

@@ -13,11 +13,6 @@
 				name="calibratedRotationalSpeed"
 				value="$applyGenericFormula(calibratedRotationSpeed)"></CalculatedVariable>
 		</Motor>
-		<Motor name="m2" identifier="2" refreshRate="2000">
-			<CalculatedVariable
-				name="calibratedRotationalSpeed"
-				value="$applyGenericFormula(calibratedRotationSpeed)"></CalculatedVariable>
-		</Motor>
 	</Controller>
 	<PurityMonitor name="prm"></PurityMonitor>
 	</configuration>
