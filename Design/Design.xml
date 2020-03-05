@@ -73,7 +73,7 @@
   		initialStatus="OpcUa_Good" initialValue="0">
   		<d:configRestriction>
   			<d:restrictionByBounds maxInclusive="1" minInclusive="0"/></d:configRestriction>
-  		<d:documentation>Take data</d:documentation>
+  		<d:documentation>Set to 1 to take data</d:documentation>
   	</d:cachevariable>
 
   	<d:cachevariable initializeWith="valueAndStatus"
@@ -82,14 +82,14 @@
   		initialStatus="OpcUa_Good" initialValue="0">
   		<d:configRestriction>
   			<d:restrictionByBounds maxInclusive="1" minInclusive="0"/></d:configRestriction>
-  		<d:documentation>Do Analysis </d:documentation>
+  		<d:documentation>Set to 1 to do analysis </d:documentation>
   	</d:cachevariable>
 
 
   	<d:cachevariable initializeWith="valueAndStatus"
   		dataType="OpcUa_Double" name="available"
   		nullPolicy="nullForbidden" addressSpaceWrite="forbidden"
-  		initialStatus="OpcUa_Good" initialValue="0">
+  		initialStatus="OpcUa_Good" initialValue="1">
   		<d:documentation>Is the server available to do things? </d:documentation>
   	</d:cachevariable>
 
