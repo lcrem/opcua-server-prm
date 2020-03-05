@@ -126,33 +126,36 @@ namespace Device
 
 		  LOG(Log::INF) << "Is purity monitor busy = " <<  getAddressSpaceLink()->getBusy();
 
+		  UaStatus status;
+
 		  if ( getAddressSpaceLink()->getTakeData() == 1 ){
 
 			  LOG(Log::INF) << "Taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
-			  UaStatus status;
 			  switch(getAddressSpaceLink()->getRunningConfiguration()){
 
 			  case 0:
 				  LOG(Log::INF) << "Taking software triggers.";
-//				  system("/home/lindac/DUNE/takeLifetimeData/takeSoftwareTriggers.sh");
 				  status = executeCommand("takeSoftwareTriggers");
 				  LOG(Log::INF) << "Finished with status " << status;
 				  break;
 
 			  case 1:
 				  LOG(Log::INF) << "Taking lamp only run.";
-				  system("sleep 10");
+				  status = executeCommand("takeLamp");
+				  LOG(Log::INF) << "Finished with status " << status;
 				  break;
 
 			  case 2:
 				  LOG(Log::INF) << "Taking run with field configuration 40.20.60 V/cm.";
-				  system("sleep 10");
+				  status = executeCommand("takeLowFields20");
+				  LOG(Log::INF) << "Finished with status " << status;
 				  break;
 
 			  case 3:
 				  LOG(Log::INF) << "Taking run with field configuration 60.30.90 V/cm.";
-				  system("sleep 10");
+				  status = executeCommand("takeLowFields30");
+				  LOG(Log::INF) << "Finished with status " << status;
 				  break;
 
 			  }
@@ -167,16 +170,15 @@ namespace Device
 
 			  LOG(Log::INF) << "Doing the analysis" ;
 
-			  system("sleep 10");
-
-			  LOG(Log::INF) << "I have done the analysis" ;
+			  status = executeCommand("doEverythingForMe");
+			  LOG(Log::INF) << "Finished with status " << status;
 
 			  getAddressSpaceLink()->setDoAnalysis(0, OpcUa_Good);
 
 		  }
 
-
 		  getAddressSpaceLink()->setBusy(0, OpcUa_Good);
+
 	  } else {
 
 		  // if the server is busy you shouldn't be allowed to do anything
@@ -222,6 +224,7 @@ UaStatus DPurityMonitor::executeCommand(char *cmd){
       fprintf(flog,"%s",result.c_str());
       fclose(flog);
 
+      LOG(Log::INF) << "Log file written in " << outfile ;
       return OpcUa_Good;
   }
 
