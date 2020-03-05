@@ -62,9 +62,9 @@
   		nullPolicy="nullForbidden" addressSpaceWrite="delegated"
   		initialStatus="OpcUa_Good" initialValue="0">
   		<d:configRestriction>
-  			<d:restrictionByBounds maxInclusive="2" minInclusive="0"/></d:configRestriction>
+  			<d:restrictionByBounds maxInclusive="3" minInclusive="0"/></d:configRestriction>
   		<d:documentation>Choose running configuration for purity monitors
-  			lamp only, 1 is 40.20.60 V/cm, 2 is 60.30.90 V/cm</d:documentation>
+  			0 is software triggers, 1 is lamp only, 2 is 40.20.60 V/cm, 3 is 60.30.90 V/cm</d:documentation>
   	</d:cachevariable>
   	
   	<d:cachevariable initializeWith="valueAndStatus"

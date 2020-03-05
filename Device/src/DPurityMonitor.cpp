@@ -130,7 +130,27 @@ namespace Device
 
 			  LOG(Log::INF) << "Taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
-			  system("sleep 10");
+			  switch(getAddressSpaceLink()->getRunningConfiguration()){
+
+			  case 0:
+				  LOG(Log::INF) << "Taking software triggers.";
+				  system("/home/lindac/DUNE/takeLifetimeData/takeSoftwareTriggers.sh");
+				  break;
+			  case 1:
+				  LOG(Log::INF) << "Taking lamp only run.";
+				  system("sleep 10");
+				  break;
+			  case 2:
+				  LOG(Log::INF) << "Taking run with field configuration 40.20.60 V/cm.";
+				  system("sleep 10");
+				  break;
+			  case 3:
+				  LOG(Log::INF) << "Taking run with field configuration 60.30.90 V/cm.";
+				  system("sleep 10");
+				  break;
+
+			  }
+
 
 			  LOG(Log::INF) << "I have finished taking data with configuration " <<  getAddressSpaceLink()->getRunningConfiguration();
 
