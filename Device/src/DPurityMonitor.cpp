@@ -117,10 +117,11 @@ namespace Device
 
   void DPurityMonitor::update()
   {
+	  OpcUa_Int16 tmpAvailable = getAddressSpaceLink()->getAvailable();
 
-	  if (available() == 1 ) {
+	  if ( tmpAvailable == 1 ) {
 
-		  LOG(Log::INF) << "Is purity monitor available = " << available() ;
+		  LOG(Log::INF) << "Is purity monitor available = " << tmpAvailable ;
 
 
 		  // from the server to the clients
