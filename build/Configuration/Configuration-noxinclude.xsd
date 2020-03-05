@@ -96,18 +96,6 @@
          </xs:choice>
       </xs:sequence>
       <xs:attribute name="name" type="tns:ObjectName" use="required"/>
-      <xs:attribute name="identifier" use="required">
-         <xs:annotation>
-            <xs:documentation>Choose running configuration for purity monitors
-  			lamp only, 1 is 40.20.60 V/cm, 2 is 60.30.90 V/cm</xs:documentation>
-         </xs:annotation>
-         <xs:simpleType>
-            <xs:restriction base="xs:unsignedInt">
-               <xs:minInclusive value="0"/>
-               <xs:maxInclusive value="2"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
    </xs:complexType>
   
   	

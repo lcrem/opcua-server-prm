@@ -984,30 +984,6 @@ namespace Configuration
     this->name_.set (std::move (x));
   }
 
-  const PurityMonitor::identifier_type& PurityMonitor::
-  identifier () const
-  {
-    return this->identifier_.get ();
-  }
-
-  PurityMonitor::identifier_type& PurityMonitor::
-  identifier ()
-  {
-    return this->identifier_.get ();
-  }
-
-  void PurityMonitor::
-  identifier (const identifier_type& x)
-  {
-    this->identifier_.set (x);
-  }
-
-  void PurityMonitor::
-  identifier (::std::unique_ptr< identifier_type > x)
-  {
-    this->identifier_.set (std::move (x));
-  }
-
 
   // Configuration
   // 
@@ -1137,10 +1113,6 @@ namespace Configuration
 
 
   // address
-  // 
-
-
-  // identifier1
   // 
 }
 
@@ -2790,12 +2762,10 @@ namespace Configuration
   //
 
   PurityMonitor::
-  PurityMonitor (const name_type& name,
-                 const identifier_type& identifier)
+  PurityMonitor (const name_type& name)
   : ::xml_schema::type (),
     CalculatedVariable_ (this),
-    name_ (name, this),
-    identifier_ (identifier, this)
+    name_ (name, this)
   {
   }
 
@@ -2805,8 +2775,7 @@ namespace Configuration
                  ::xml_schema::container* c)
   : ::xml_schema::type (x, f, c),
     CalculatedVariable_ (x.CalculatedVariable_, f, this),
-    name_ (x.name_, f, this),
-    identifier_ (x.identifier_, f, this)
+    name_ (x.name_, f, this)
   {
   }
 
@@ -2816,8 +2785,7 @@ namespace Configuration
                  ::xml_schema::container* c)
   : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
     CalculatedVariable_ (this),
-    name_ (this),
-    identifier_ (this)
+    name_ (this)
   {
     if ((f & ::xml_schema::flags::base) == 0)
     {
@@ -2861,25 +2829,12 @@ namespace Configuration
         this->name_.set (name_traits::create (i, f, this));
         continue;
       }
-
-      if (n.name () == "identifier" && n.namespace_ ().empty ())
-      {
-        this->identifier_.set (identifier_traits::create (i, f, this));
-        continue;
-      }
     }
 
     if (!name_.present ())
     {
       throw ::xsd::cxx::tree::expected_attribute< char > (
         "name",
-        "");
-    }
-
-    if (!identifier_.present ())
-    {
-      throw ::xsd::cxx::tree::expected_attribute< char > (
-        "identifier",
         "");
     }
   }
@@ -2899,7 +2854,6 @@ namespace Configuration
       static_cast< ::xml_schema::type& > (*this) = x;
       this->CalculatedVariable_ = x.CalculatedVariable_;
       this->name_ = x.name_;
-      this->identifier_ = x.identifier_;
     }
 
     return *this;
@@ -3213,60 +3167,6 @@ namespace Configuration
 
   address::
   ~address ()
-  {
-  }
-
-  // identifier1
-  //
-
-  identifier1::
-  identifier1 (const ::xml_schema::unsigned_int& _xsd_unsigned_int_base)
-  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (_xsd_unsigned_int_base)
-  {
-  }
-
-  identifier1::
-  identifier1 (const identifier1& x,
-               ::xml_schema::flags f,
-               ::xml_schema::container* c)
-  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (x, f, c)
-  {
-  }
-
-  identifier1::
-  identifier1 (const ::xercesc::DOMElement& e,
-               ::xml_schema::flags f,
-               ::xml_schema::container* c)
-  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (e, f, c)
-  {
-  }
-
-  identifier1::
-  identifier1 (const ::xercesc::DOMAttr& a,
-               ::xml_schema::flags f,
-               ::xml_schema::container* c)
-  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (a, f, c)
-  {
-  }
-
-  identifier1::
-  identifier1 (const ::std::string& s,
-               const ::xercesc::DOMElement* e,
-               ::xml_schema::flags f,
-               ::xml_schema::container* c)
-  : ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type > (s, e, f, c)
-  {
-  }
-
-  identifier1* identifier1::
-  _clone (::xml_schema::flags f,
-          ::xml_schema::container* c) const
-  {
-    return new class identifier1 (*this, f, c);
-  }
-
-  identifier1::
-  ~identifier1 ()
   {
   }
 }
@@ -4144,17 +4044,6 @@ namespace Configuration
 
       a << i.name ();
     }
-
-    // identifier
-    //
-    {
-      ::xercesc::DOMAttr& a (
-        ::xsd::cxx::xml::dom::create_attribute (
-          "identifier",
-          e));
-
-      a << i.identifier ();
-    }
   }
 
   void
@@ -4439,25 +4328,6 @@ namespace Configuration
               const address& i)
   {
     l << static_cast< const ::xml_schema::string& > (i);
-  }
-
-  void
-  operator<< (::xercesc::DOMElement& e, const identifier1& i)
-  {
-    e << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
-  }
-
-  void
-  operator<< (::xercesc::DOMAttr& a, const identifier1& i)
-  {
-    a << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
-  }
-
-  void
-  operator<< (::xml_schema::list_stream& l,
-              const identifier1& i)
-  {
-    l << static_cast< const ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >& > (i);
   }
 }
 

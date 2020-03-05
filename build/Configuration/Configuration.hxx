@@ -275,7 +275,6 @@ namespace Configuration
   class refreshRate;
   class identifier;
   class address;
-  class identifier1;
 }
 
 
@@ -1553,27 +1552,9 @@ namespace Configuration
     void
     name (::std::unique_ptr< name_type > p);
 
-    // identifier
-    //
-    typedef ::Configuration::identifier1 identifier_type;
-    typedef ::xsd::cxx::tree::traits< identifier_type, char > identifier_traits;
-
-    const identifier_type&
-    identifier () const;
-
-    identifier_type&
-    identifier ();
-
-    void
-    identifier (const identifier_type& x);
-
-    void
-    identifier (::std::unique_ptr< identifier_type > p);
-
     // Constructors.
     //
-    PurityMonitor (const name_type&,
-                   const identifier_type&);
+    PurityMonitor (const name_type&);
 
     PurityMonitor (const ::xercesc::DOMElement& e,
                    ::xml_schema::flags f = 0,
@@ -1603,7 +1584,6 @@ namespace Configuration
     protected:
     CalculatedVariable_sequence CalculatedVariable_;
     ::xsd::cxx::tree::one< name_type > name_;
-    ::xsd::cxx::tree::one< identifier_type > identifier_;
   };
 
   class Configuration: public ::xml_schema::type
@@ -1830,38 +1810,6 @@ namespace Configuration
 
     virtual 
     ~address ();
-  };
-
-  class identifier1: public ::xsd::cxx::tree::fundamental_base< ::xml_schema::unsigned_int, char, ::xml_schema::simple_type >
-  {
-    public:
-    // Constructors.
-    //
-    identifier1 (const ::xml_schema::unsigned_int&);
-
-    identifier1 (const ::xercesc::DOMElement& e,
-                 ::xml_schema::flags f = 0,
-                 ::xml_schema::container* c = 0);
-
-    identifier1 (const ::xercesc::DOMAttr& a,
-                 ::xml_schema::flags f = 0,
-                 ::xml_schema::container* c = 0);
-
-    identifier1 (const ::std::string& s,
-                 const ::xercesc::DOMElement* e,
-                 ::xml_schema::flags f = 0,
-                 ::xml_schema::container* c = 0);
-
-    identifier1 (const identifier1& x,
-                 ::xml_schema::flags f = 0,
-                 ::xml_schema::container* c = 0);
-
-    virtual identifier1*
-    _clone (::xml_schema::flags f = 0,
-            ::xml_schema::container* c = 0) const;
-
-    virtual 
-    ~identifier1 ();
   };
 }
 
@@ -2156,16 +2104,6 @@ namespace Configuration
   void
   operator<< (::xml_schema::list_stream&,
               const address&);
-
-  void
-  operator<< (::xercesc::DOMElement&, const identifier1&);
-
-  void
-  operator<< (::xercesc::DOMAttr&, const identifier1&);
-
-  void
-  operator<< (::xml_schema::list_stream&,
-              const identifier1&);
 }
 
 #include <xsd/cxx/post.hxx>
