@@ -198,7 +198,7 @@ UaStatus DPurityMonitor::executeCommand(char *cmd){
 	  sprintf(outfile,"/data/PurityMonitor/Filling/logs/%s.log", cmd);
 
       FILE* pipe = popen(infile, "r");
-      if (!pipe) return "ERROR";
+      if (!pipe) return OpcUa_BadNothingToDo;
       char buffer[128];
       UaString result = "";
       while(!feof(pipe)) {
