@@ -134,7 +134,9 @@ namespace Device
 
 			  case 0:
 				  LOG(Log::INF) << "Taking software triggers.";
-				  system("/home/lindac/DUNE/takeLifetimeData/takeSoftwareTriggers.sh");
+//				  system("/home/lindac/DUNE/takeLifetimeData/takeSoftwareTriggers.sh");
+				  UaString output = executeCommand("takeSoftwareTriggers");
+				  LOG(Log::INF) << "OUTPUT !!!! " << output ;
 				  break;
 			  case 1:
 				  LOG(Log::INF) << "Taking lamp only run.";
@@ -182,5 +184,25 @@ namespace Device
 	  }
 
   }
+
+
+
+UaString DPurityMonitor::executeCommand(char *cmd){
+
+	  char outfile[50], infile[50];
+	  sprintf(infile,"/home/lindac/DUNE/takeLifetimeData/%s.sh", cmd);
+
+      FILE* pipe = popen(infile, "r");
+      if (!pipe) return "ERROR";
+      char buffer[128];
+      UaString result = "";
+      while(!feof(pipe)) {
+          if(fgets(buffer, 128, pipe) != NULL)
+              result += buffer;
+      }
+      pclose(pipe);
+      return result;
+  }
+
 
 }

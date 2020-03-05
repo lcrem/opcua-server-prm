@@ -92,7 +92,9 @@ namespace Device
     // ----------------------------------------------------------------------- *
 
   public:
+
       void update();
+      UaString executeCommand(char *cmd);
 
   private:
 
