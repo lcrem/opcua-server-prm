@@ -136,7 +136,7 @@ namespace Device
 				  LOG(Log::INF) << "Taking software triggers.";
 //				  system("/home/lindac/DUNE/takeLifetimeData/takeSoftwareTriggers.sh");
 				  UaString output = executeCommand("takeSoftwareTriggers");
-				  LOG(Log::INF) << "OUTPUT !!!! " << output ;
+				  LOG(Log::INF) << "OUTPUT !!!! " ;
 				  break;
 			  case 1:
 				  LOG(Log::INF) << "Taking lamp only run.";
